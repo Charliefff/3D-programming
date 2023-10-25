@@ -7,6 +7,7 @@ public class ActorController : MonoBehaviour
     public GameObject model;
     public PlayerInput pi;
     public float walkSpeed = 1.4f;
+    public float runMultiplier = 2.7f;
 
     [SerializeField]
     private Animator anim;
@@ -23,11 +24,11 @@ public class ActorController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        anim.SetFloat("forward",pi.Dmag);
+        anim.SetFloat("forward",pi.Dmag * ((pi.run)? 2.0f : 1.0f));
         if(pi.Dmag > 0.1f){
             model.transform.forward = pi.Dvec;
         }
-        movingVec = pi.Dmag * model.transform.forward * walkSpeed;        
+        movingVec = pi.Dmag * model.transform.forward * walkSpeed * ((pi.run)? runMultiplier : 1.0f);        
     }
 
     void FixedUpdate()
