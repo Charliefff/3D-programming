@@ -19,7 +19,7 @@ public class Weapon : Item
 
     public enum WeaponType
     {
-        OffHand,
+        skill,
         MainHand
     }
 
