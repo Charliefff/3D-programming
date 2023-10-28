@@ -42,6 +42,13 @@ public class PlayerInput : MonoBehaviour
     private float DupProjection;
     private float DrightProjection;
 
+    [Header("==== Mouse settings ====")]
+    public bool mouseEnable = true;
+    public float mouseSensitivityX = 1.0f;
+    public float mouseSensitivityY = 1.0f;
+
+
+
 
     
     // Start is called before the first frame update
@@ -53,8 +60,14 @@ public class PlayerInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Jup = (Input.GetKey(keyJUp)? 1.0f:0) - (Input.GetKey(keyJDown)?1.0f:0);
-        Jright = (Input.GetKey(keyJRight)? 1.0f:0) - (Input.GetKey(keyJLeft)?1.0f:0);
+        if(mouseEnable){
+            Jup = Input.GetAxis("Mouse Y") * 3.0f * mouseSensitivityY;
+            Jright = Input.GetAxis("Mouse X") * 2.5f * mouseSensitivityX;
+        }else{
+            Jup = (Input.GetKey(keyJUp)? 1.0f:0) - (Input.GetKey(keyJDown)?1.0f:0);
+            Jright = (Input.GetKey(keyJRight)? 1.0f:0) - (Input.GetKey(keyJLeft)?1.0f:0);
+        }
+       
 
         if(inputEnable){                
             targetDup = (Input.GetKey(keyUP)? 1.0f:0) - (Input.GetKey(keyDown)? 1.0f:0);

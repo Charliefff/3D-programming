@@ -547,6 +547,9 @@ MonoBehaviour:
   Jright: 0
   run: 0
   inputEnable: 1
+  mouseEnable: 1
+  mouseSensitivityX: 1
+  mouseSensitivityY: 1
 --- !u!114 &1015028407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -859,7 +862,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 7bd2a59cbf0ea3f43a651c82e03fe608, type: 2}
   m_CullingMode: 1
-  m_UpdateMode: 0
+  m_UpdateMode: 1
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
