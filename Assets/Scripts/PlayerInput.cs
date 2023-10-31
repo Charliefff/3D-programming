@@ -16,11 +16,19 @@ public class PlayerInput : MonoBehaviour
     public string keyC;
     public string keyD;
 
+    public string keyJUp = "i";
+    public string keyJDown = "k";
+    public string keyJLeft = "j";
+    public string keyJRight = "l";
+
+
     [Header("==== output signals ====")]
     public float Dup;
     public float Dright;
     public float Dmag;
     public Vector3 Dvec;
+    public float Jup;
+    public float Jright;
 
     public bool run;
 
@@ -31,6 +39,15 @@ public class PlayerInput : MonoBehaviour
     private float targetDright;
     private float velocityDup;
     private float velocityDright;
+    private float DupProjection;
+    private float DrightProjection;
+
+    [Header("==== Mouse settings ====")]
+    public bool mouseEnable = true;
+    public float mouseSensitivityX = 1.0f;
+    public float mouseSensitivityY = 1.0f;
+
+
 
 
     
@@ -43,6 +60,15 @@ public class PlayerInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(mouseEnable){
+            Jup = Input.GetAxis("Mouse Y") * 3.0f * mouseSensitivityY;
+            Jright = Input.GetAxis("Mouse X") * 2.5f * mouseSensitivityX;
+        }else{
+            Jup = (Input.GetKey(keyJUp)? 1.0f:0) - (Input.GetKey(keyJDown)?1.0f:0);
+            Jright = (Input.GetKey(keyJRight)? 1.0f:0) - (Input.GetKey(keyJLeft)?1.0f:0);
+        }
+       
+
         if(inputEnable){                
             targetDup = (Input.GetKey(keyUP)? 1.0f:0) - (Input.GetKey(keyDown)? 1.0f:0);
             targetDright = (Input.GetKey(keyRight)? 1.0f:0) - (Input.GetKey(keyLeft)? 1.0f:0);
@@ -54,8 +80,11 @@ public class PlayerInput : MonoBehaviour
         Dup = Mathf.SmoothDamp(Dup,targetDup,ref velocityDup,0.1f);
         Dright = Mathf.SmoothDamp(Dright,targetDright,ref velocityDright,0.1f);
 
-        Dmag = Mathf.Sqrt((Dup * Dup) +  (Dright * Dright));
-        Dvec = Dright * transform.right + Dup * transform.forward;
+        DupProjection = Dup * Mathf.Sqrt(1-(Dright*Dright) * 0.5f);
+        DrightProjection = Dright * Mathf.Sqrt(1-(Dup*Dup) * 0.5f);
+
+        Dmag = Mathf.Sqrt((DupProjection * DupProjection) +  (DrightProjection * DrightProjection));
+        Dvec = DrightProjection * transform.right + DupProjection * transform.forward;
 
         run = Input.GetKey(keyA);
     }
