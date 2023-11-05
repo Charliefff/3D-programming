@@ -1,29 +1,33 @@
-using System.Collections;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 using UnityEngine;
 
-///武器裝備寫在一起
-
-
-/// <summary>
-/// 武器類別
-/// </summary>
-public class Weapon : Item
+[System.Serializable]
+public class Weapon
 {
-    public int Damage {  get; set; }
-    public WeaponType WPType{  get; set; }
+    [JsonProperty("name")]
+    public string Name { get; set; }
 
-    public Weapon (int ID, string name, ItemType type , ItemQuality quality, string description, int capacity, int buyPrice, int sellPrice, string sprite, int damage, WeaponType weaponType) : base(ID, name, type, quality, description, capacity, buyPrice, sellPrice, sprite)
+    [JsonProperty("damage")]
+    public int Damage { get; set; }
+
+    [JsonProperty("price")]
+    public int Price { get; set; }
+
+    [JsonProperty("description")]
+    public string Description { get; set; }
+
+    [JsonProperty("quality")]
+    public string QualityString { get; set; }
+
+
+    [JsonIgnore]
+    public ItemQuality Quality
     {
-        this.Damage = damage;
-        this.WPType = weaponType;
+        get
+        {
+            return (ItemQuality)System.Enum.Parse(typeof(ItemQuality), QualityString, true);
+        }
     }
-
-    //不需要
-    public enum WeaponType
-    {
-        skill,
-        MainHand
-    }
-
 }
+

@@ -3,13 +3,22 @@ using Newtonsoft.Json;
 using UnityEngine;
 
 [System.Serializable]
-public class Ability
+public class State
 {
+    [JsonProperty("name")]
+    public string Name { get; set; }
+
+    [JsonProperty("type")]
+    public string Type { get; set; }
+
+    [JsonProperty("duration")]
+    public int Duration { get; set; }
+
     [JsonProperty("hp")]
-    public int HP { get; set; }
+    public int Hp { get; set; }
 
     [JsonProperty("mp")]
-    public int MP { get; set; }
+    public int Mp { get; set; }
 
     [JsonProperty("attack")]
     public int Attack { get; set; }
@@ -25,13 +34,4 @@ public class Ability
 
     [JsonProperty("immunity")]
     public string Immunity { get; set; }
-
-    [JsonProperty("duration")]
-    public int Duration { get; set; }
-
- 
-    [JsonProperty("image")]
-    public string Image { get; set; }
-
 }
-
