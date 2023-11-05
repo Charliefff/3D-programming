@@ -1,0 +1,110 @@
+{
+  "1": {
+    "name": "中毒",
+    "type": "Debuff",
+    "duration": 3,
+    "hp": -10,
+    "mp": 0,
+    "attack": 0,
+    "defense": 0,
+    "magic": 0,
+    "speed": 0,
+    "immunity": "Poison Immune"
+  },
+  "2": {
+    "name": "減防禦",
+    "type": "Debuff",
+    "duration": 5,
+    "hp": 0,
+    "mp": 0,
+    "attack": 0,
+    "defense": -5,
+    "magic": 0,
+    "speed": 0,
+    "immunity": "Defense Buff"
+  },
+  "3": {
+    "name": "減攻擊",
+    "type": "Debuff",
+    "duration": 5,
+    "hp": 0,
+    "mp": 0,
+    "attack": -5,
+    "defense": 0,
+    "magic": 0,
+    "speed": 0,
+    "immunity": "Attack Buff"
+  },
+  "4": {
+    "name": "緩速",
+    "type": "Debuff",
+    "duration": 4,
+    "hp": 0,
+    "mp": 0,
+    "attack": 0,
+    "defense": 0,
+    "magic": 0,
+    "speed": -3,
+    "immunity": "Speed Buff"
+  },
+  "5": {
+    "name": "沉默",
+    "type": "Debuff",
+    "duration": 3,
+    "hp": 0,
+    "mp": 0,
+    "attack": 0,
+    "defense": 0,
+    "magic": 0,
+    "speed": 0,
+    "immunity": "Silence Immune"
+  },
+  "6": {
+    "name": "禁魔",
+    "type": "Debuff",
+    "duration": 3,
+    "hp": 0,
+    "mp": 0,
+    "attack": 0,
+    "defense": 0,
+    "magic": -10000,
+    "speed": 0,
+    "immunity": "Magic Immune"
+  },
+  "7": {
+    "name": "禁療",
+    "type": "Debuff",
+    "duration": 3,
+    "hp": 0,
+    "mp": 0,
+    "attack": 0,
+    "defense": 0,
+    "magic": 0,
+    "speed": 0,
+    "immunity": "Healing Immune"
+  },
+  "8": {
+    "name": "禁逃跑",
+    "type": "Debuff",
+    "duration": 0,
+    "hp": 0,
+    "mp": 0,
+    "attack": 0,
+    "defense": 0,
+    "magic": 0,
+    "speed": -5,
+    "immunity": "Escape Immune"
+  },
+  "9": {
+    "name": "瀕死",
+    "type": "Condition",
+    "duration": 0,
+    "hp": 0,
+    "mp": 0,
+    "attack": 0,
+    "defense": 0,
+    "magic": 0,
+    "speed": 0,
+    "immunity": "death"
+  }
+}

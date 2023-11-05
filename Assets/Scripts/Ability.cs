@@ -9,10 +9,12 @@ public class Ability
     public double MaxMana;
     public int Blood;
     public double Mana;
-    public int Money;
+    public int Money;//ª¬ºA
     public double experience;
     public int Level;
-    public double ability;
+    //¯à¤O dict
+    //public double ability;
+    //skill dict
 }
 
 [CreateAssetMenu(fileName = "Character_ability", menuName = "3D_gaming/Create Character ability")]

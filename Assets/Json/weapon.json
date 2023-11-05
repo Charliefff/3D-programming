@@ -1,0 +1,212 @@
+{
+  "1": {
+    "name": "青銅長劍",
+    "damage": 10,
+    "price": 50,
+    "description": "一把普通的青銅長劍，適合初學者使用。",
+    "quality": "Common"
+  },
+  "2": {
+    "name": "火花法杖",
+    "damage": 20,
+    "price": 100,
+    "description": "一個能夠發射火花的法杖，適合法師使用。",
+    "quality": "Uncommon"
+  },
+  "3": {
+    "name": "虎牙斧",
+    "damage": 15,
+    "price": 70,
+    "description": "一把具有虎牙形狀的鋼斧，適合戰士使用。",
+    "quality": "Rare"
+  },
+  "4": {
+    "name": "毒蛇短劍",
+    "damage": 12,
+    "price": 80,
+    "description": "一把帶有毒蛇紋理的短劍，能夠使敵人中毒。",
+    "quality": "Epic"
+  },
+  "5": {
+    "name": "傳說之劍",
+    "damage": 25,
+    "price": 150,
+    "description": "一把傳說中的劍，擁有強大的力量。",
+    "quality": "Legendary"
+  },
+  "6": {
+    "name": "聖靈法杖",
+    "damage": 30,
+    "price": 200,
+    "description": "一根被聖靈祝福的法杖，能夠施放神秘法術。",
+    "quality": "Artifact"
+  },
+  "7": {
+    "name": "精鐵匕首",
+    "damage": 7,
+    "price": 40,
+    "description": "一把精鍊的匕首，輕巧而鋒利。",
+    "quality": "Common"
+  },
+  "8": {
+    "name": "霜寒法杖",
+    "damage": 18,
+    "price": 90,
+    "description": "一根法杖，能夠召喚寒冷的霜雪風暴。",
+    "quality": "Uncommon"
+  },
+  "9": {
+    "name": "古老之槌",
+    "damage": 20,
+    "price": 80,
+    "description": "一把看似古老的巨大槌子，有強大的打擊力。",
+    "quality": "Rare"
+  },
+  "10": {
+    "name": "影劍",
+    "damage": 14,
+    "price": 100,
+    "description": "一把劍，能夠讓使用者變得隱形。",
+    "quality": "Epic"
+  },
+  "11": {
+    "name": "神之劍",
+    "damage": 30,
+    "price": 250,
+    "description": "一把被神祇賜予的劍，能夠戰勝任何敵人。",
+    "quality": "Legendary"
+  },
+  "12": {
+    "name": "天使之杖",
+    "damage": 35,
+    "price": 300,
+    "description": "一根能夠召喚天使的杖，具有神聖的力量。",
+    "quality": "Artifact"
+  },
+  "13": {
+    "name": "硬化匕首",
+    "damage": 8,
+    "price": 45,
+    "description": "一把經過特殊硬化處理的匕首，極為耐用。",
+    "quality": "Common"
+  },
+  "14": {
+    "name": "雷霆法杖",
+    "damage": 22,
+    "price": 110,
+    "description": "一根法杖，能夠引發強烈的雷霆之力。",
+    "quality": "Uncommon"
+  },
+  "15": {
+    "name": "巨石斧",
+    "damage": 16,
+    "price": 90,
+    "description": "一把巨大的石斧，能夠粉碎敵人的盾牌。",
+    "quality": "Rare"
+  },
+  "16": {
+    "name": "暗影短劍",
+    "damage": 15,
+    "price": 120,
+    "description": "一把帶有暗影之力的短劍，能夠隱藏於黑暗中。",
+    "quality": "Epic"
+  },
+  "17": {
+    "name": "靈魂之刃",
+    "damage": 40,
+    "price": 350,
+    "description": "一把擁有吞噬靈魂能力的劍，能夠吸取敵人的生命。",
+    "quality": "Legendary"
+  },
+  "18": {
+    "name": "幽靈之杖",
+    "damage": 45,
+    "price": 400,
+    "description": "一根幽靈般的法杖，能夠穿越境界。",
+    "quality": "Artifact"
+  },
+  "19": {
+    "name": "精鋼劍",
+    "damage": 12,
+    "price": 60,
+    "description": "一把精鍊的鋼劍，切割能力出眾。",
+    "quality": "Common"
+  },
+  "20": {
+    "name": "冰霜法杖",
+    "damage": 25,
+    "price": 120,
+    "description": "一根法杖，能夠凍結敵人。",
+    "quality": "Uncommon"
+  },
+  "21": {
+    "name": "巨龍之斧",
+    "damage": 22,
+    "price": 110,
+    "description": "一把被巨龍寶物賜予的斧頭，具有火焰之力。",
+    "quality": "Rare"
+  },
+  "22": {
+    "name": "毀滅之刃",
+    "damage": 18,
+    "price": 140,
+    "description": "一把毀滅性的大劍，能夠摧毀城牆。",
+    "quality": "Epic"
+  },
+  "23": {
+    "name": "神聖之劍",
+    "damage": 50,
+    "price": 400,
+    "description": "一把擁有神聖之力的劍，能夠驅散邪惡。",
+    "quality": "Legendary"
+  },
+  "24": {
+    "name": "聖杯之杖",
+    "damage": 60,
+    "price": 500,
+    "description": "一根傳說中的聖杯法杖，具有治癒力量。",
+    "quality": "Artifact"
+  },
+  "25": {
+    "name": "秘銀匕首",
+    "damage": 9,
+    "price": 50,
+    "description": "一把秘銀製作的匕首，刃口極鋒利。",
+    "quality": "Common"
+  },
+  "26": {
+    "name": "奇異法杖",
+    "damage": 28,
+    "price": 130,
+    "description": "一根充滿神秘能力的法杖，能夠讓時間倒流。",
+    "quality": "Uncommon"
+  },
+  "27": {
+    "name": "黑暗之鉤",
+    "damage": 26,
+    "price": 120,
+    "description": "一把被黑暗力量附身的鉤狀武器，能夠控制暗影。",
+    "quality": "Rare"
+  },
+  "28": {
+    "name": "災厄短劍",
+    "damage": 20,
+    "price": 160,
+    "description": "一把能夠帶來災厄的短劍，威力巨大。",
+    "quality": "Epic"
+  },
+  "29": {
+    "name": "神秘之刃",
+    "damage": 70,
+    "price": 450,
+    "description": "一把神秘之刃，具有未知的力量。",
+    "quality": "Legendary"
+  },
+  "30": {
+    "name": "神聖星杖",
+    "damage": 75,
+    "price": 550,
+    "description": "一根擁有星辰之力的法杖，能夠改變命運。",
+    "quality": "Artifact"
+  }
+}

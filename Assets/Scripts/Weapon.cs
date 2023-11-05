@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+///武器裝備寫在一起
+
 
 /// <summary>
 /// 武器類別
@@ -17,6 +19,7 @@ public class Weapon : Item
         this.WPType = weaponType;
     }
 
+    //不需要
     public enum WeaponType
     {
         skill,
