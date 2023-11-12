@@ -25,6 +25,7 @@ public class Testnemy : MonoBehaviour
             Base.enemyID = 1;
             Base.playerVec = GameObject.Find("PlayerHandle").GetComponent<Transform>().position;
             
+            Cursor.lockState = CursorLockMode.None; 
             SceneManager.LoadScene("BattleScene");
         }
     }
