@@ -18,17 +18,17 @@ public class Base : MonoBehaviour
     //public SerializableDictionary<string, Monster>
     public static Ability[] player = new Ability[4];
 
-    public static string consumables_path = "Assets/Json/consumable.json";
-    public static string weapons_path = "Assets/Json/weapon.json";
+    public static string consumables_path = "../Json/consumable.json";
+    public static string weapons_path = "../Json/weapon.json";
     public static string abilities_path = "";
-    public static string enemies_path = "Assets/Json/enemy.json";
-    public static string skills_path = "Assets/Json/skill.json";
-    public static string states_path = "Assets/Json/state.json";
+    public static string enemies_path = "../Json/enemy.json";
+    public static string skills_path = "../Json/skill.json";
+    public static string states_path = "../Json/state.json";
 
     public static Vector3 playerVec;
     public static int enemyID;
     public static string sceneName;
-    public static string Bagdatapath = "Assets/Json/Bagjson";
+    public static string Bagdatapath = "../Json/Bagjson";
     void Start()
     {
 
