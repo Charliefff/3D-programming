@@ -11,11 +11,9 @@ public class BattleControl : BattleBase
     private CharacterStats characterStats;
     private bool temp;
     private new string name;
-
+    private float moveSpeed = 1.4f;
     public void Awake()
     {
-        ani.SetBool("SillyDance", false);
-
 
     }
     public void Update()
@@ -28,9 +26,10 @@ public class BattleControl : BattleBase
             ani.SetBool(name, !temp);
         }
 
-        if (Input.GetKeyDown(KeyCode.KeypadEnter))
+        if (Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return))
         {
-            Attack();
+            Debug.Log("Enter");
+            MoveForward();
         }
         if (HP == 0)
         {
@@ -44,18 +43,18 @@ public class BattleControl : BattleBase
             name = "HP";
             ani.SetInteger(name, 0);
         }
-
         else
         {
-           
+
         }
 
-
-
-
-
-
-
-
     }
+
+    private void MoveForward()
+    {
+        ani.SetFloat("forward", 1.5f * Mathf.Lerp(ani.GetFloat("forward"), (2.0f), 0.5f));
+
+        
+    }
+
 }

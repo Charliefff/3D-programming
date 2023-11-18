@@ -6,11 +6,12 @@ public class BattleBase : MonoBehaviour
 {
     public Animator ani;
     protected GameObject target;
+    protected GameObject me;
     protected void Attack()
     {
         
     }
-    protected int HP;
+    protected int HP = 100;
 
     protected enum CharacterStats
     {
