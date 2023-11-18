@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bosssphere : MonoBehaviour
 {
-    public GameObject targetobj;
+    
     public float rotationSpeed = 50f;
 
     public void Update()
@@ -14,6 +14,6 @@ public class Bosssphere : MonoBehaviour
 
     private void Rotation()
     {
-        targetobj.transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime);
+        transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime);
     }
 }
