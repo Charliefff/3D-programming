@@ -9,11 +9,20 @@ public class ActorController : MonoBehaviour
     public float walkSpeed = 1.4f;
     public float runMultiplier = 2.7f;
 
+    public GameObject playerHandle;
+
     [SerializeField]
     private Animator anim;
     private Rigidbody rigid;
     private Vector3 movingVec;
-    // Start is called before the first frame update
+    
+
+    private List<Vector3> portalPositions = new List<Vector3>
+    {
+        new Vector3(31.28487f, 6.5f, 131.1901f), 
+        new Vector3(46.74676f, 3.5f, 79.3427f), 
+        new Vector3(21.55777f, 5.5f, 75.34791f)  
+    };
     void Awake()
     {
         pi = GetComponent<PlayerInput> ();
@@ -35,5 +44,9 @@ public class ActorController : MonoBehaviour
     void FixedUpdate()
     {
         rigid.position += movingVec * Time.fixedDeltaTime;
+    }
+
+    public void Transmit(int portalPositionsID){
+        playerHandle.transform.position = portalPositions[portalPositionsID];
     }
 }
