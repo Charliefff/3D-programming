@@ -33,7 +33,7 @@ public class PlayerInput : MonoBehaviour
     public bool run;
 
     [Header("==== others ====")]
-    public bool inputEnable = true;
+    public static bool inputEnable = true;
     
     private float targetDup;
     private float targetDright;
@@ -43,7 +43,7 @@ public class PlayerInput : MonoBehaviour
     private float DrightProjection;
 
     [Header("==== Mouse settings ====")]
-    public bool mouseEnable = true;
+    public static bool mouseEnable = true;
     public float mouseSensitivityX = 1.0f;
     public float mouseSensitivityY = 1.0f;
 

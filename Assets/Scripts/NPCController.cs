@@ -7,27 +7,29 @@ public class NPCController : MonoBehaviour
     public List<Dialog> dialog;
     public GameObject communication;
     private DialogController dialogController;
-    private PlayerInput playerInput;
     private bool isPlayerNear = false;
 
     // Update is called once per frame
     void Start()
     {
         dialogController = communication.GetComponent<DialogController>();
-        playerInput = FindObjectOfType<PlayerInput>();
     }
     void Update()
     {
         if(!communication.activeSelf){
-            if(!playerInput.inputEnable)
+            if(!PlayerInput.inputEnable || !PlayerInput.mouseEnable || !DashBoardController.dashBoardEnable)
             {
-                playerInput.inputEnable = true;
+                PlayerInput.inputEnable = true;
+                PlayerInput.mouseEnable = true;
+                DashBoardController.dashBoardEnable = true;
             }
             
             
             if (isPlayerNear && Input.GetKeyDown(KeyCode.E))
             {
-                playerInput.inputEnable = false;
+                PlayerInput.inputEnable = false;
+                PlayerInput.mouseEnable = false;
+                DashBoardController.dashBoardEnable = false;
                 ShowDialog();
             }
         }        

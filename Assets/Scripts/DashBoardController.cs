@@ -6,6 +6,7 @@ public class DashBoardController : MonoBehaviour
 {
     public GameObject DashBoard;
     private UIControler uiController;
+    public static bool dashBoardEnable = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +16,7 @@ public class DashBoardController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && dashBoardEnable)
         {            
             if (Time.timeScale == 1.0f)
             {
