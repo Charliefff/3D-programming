@@ -26,8 +26,9 @@ public class BattleBase : MonoBehaviour
     protected List<GameObject> MonstersList;
     protected List<GameObject> PlayersList;
     protected List<GameObject> ObjList;
-    protected List<int> SpeedList = new List<int> { 1, 2, 3, 4, 5 };
-    protected int HP = 100;
+    protected List<int> SpeedList = new List<int> { 4, 0, 2, 3, 1 };
+    
+    //protected int HP = 100;
 
   
 
@@ -40,7 +41,7 @@ public class BattleBase : MonoBehaviour
         MonstersList = new List<GameObject>();
         PlayersList = new List<GameObject>();
 
-
+        ani = GetComponent<Animator>();
 
         foreach (var o in Monsters)
         {
@@ -53,11 +54,12 @@ public class BattleBase : MonoBehaviour
             ObjList.Add(o);
             PlayersList.Add(o);
         }
-        SortBySpeed(ObjList);
+        SortBySpeed();
+        
     }
 
     //®Ú¾Ú³t«×sort
-    private void SortBySpeed(List<GameObject> ObjList)
+    private void SortBySpeed()
     {
         
         ObjList = ObjList.Select((obj, index) => new { obj, speed = SpeedList[index] })
