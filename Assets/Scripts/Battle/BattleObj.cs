@@ -4,6 +4,6 @@ using UnityEngine;
 
 public class BattleObj : BattleControl
 {
-    // Start is called before the first frame update
+    
     
 }
