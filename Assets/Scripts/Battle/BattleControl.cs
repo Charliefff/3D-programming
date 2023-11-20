@@ -28,7 +28,7 @@ public class BattleControl : BattleBase
         initialRotation = moveobj.transform.rotation;
         if (tag == "Enemy" && PlayersList.Count > 0)
         {
-            Target = PlayersList[2];
+            Target = PlayersList[1];
         }
         if (tag == "Player" && MonstersList.Count > 0)
         {
@@ -49,12 +49,14 @@ public class BattleControl : BattleBase
             GameObject SubObj = Target.transform.GetChild(0).gameObject;
             float Distance = 1f;
             float rotationSpeed = 3f;
+            float speed = 1.5f;
+
             if (Target != null && Vector3.Distance(moveobj.transform.position, targetPos) > Distance)
             {
+                
                 Vector3 direction = (targetPos - moveobj.transform.position).normalized;
                 Quaternion lookRotation = Quaternion.LookRotation(direction);
                 moveobj.transform.rotation = Quaternion.Slerp(moveobj.transform.rotation, lookRotation, Time.deltaTime * rotationSpeed);
-                float speed = 1f;
                 moveobj.transform.Translate(Vector3.forward * Time.deltaTime * speed);
             }
             else
@@ -70,6 +72,7 @@ public class BattleControl : BattleBase
                 }
                 else
                 {
+                    ani.SetFloat("forward", 0f);
                     moveobj.transform.position = tempPos;
                     moveobj.transform.rotation = initialRotation;
                     CurrentIndex += 1;
@@ -128,11 +131,21 @@ public class BattleControl : BattleBase
                 ChooseTarget();
             CanMove = true;
         }
-        if (gameObject.GetComponent<CharAbility>().HP == 0)
+        if (gameObject.GetComponent<CharAbility>().HP <= 0)
         {
+
+            GameObject father_obj;
+            father_obj = gameObject.transform.parent.gameObject;
             name = "HP";
             float num = 0f; 
             ani.SetFloat(name, num);
+            
+            if (father_obj.tag == "Enemy")
+            {
+                Destroy(father_obj, 4f);
+            }
+            else
+                Destroy(gameObject, 4f);
         }
 
 

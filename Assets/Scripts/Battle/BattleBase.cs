@@ -58,6 +58,11 @@ public class BattleBase : MonoBehaviour
         
     }
 
+    public enum player
+    {
+        
+    }
+
     //®Ú¾Ú³t«×sort
     private void SortBySpeed()
     {
