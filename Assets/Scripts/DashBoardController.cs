@@ -11,6 +11,7 @@ public class DashBoardController : MonoBehaviour
     void Start()
     {
         uiController = GetComponent<UIControler>();
+        DashBoard.SetActive(false);
     }
 
     // Update is called once per frame

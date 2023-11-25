@@ -5,6 +5,8 @@ using UnityEngine;
 public class ActorController : MonoBehaviour
 {
     public GameObject model;
+    public GameObject[] modelList = new GameObject[4];
+
     public PlayerInput pi;
     public float walkSpeed = 1.4f;
     public float runMultiplier = 2.7f;
@@ -28,6 +30,7 @@ public class ActorController : MonoBehaviour
         pi = GetComponent<PlayerInput> ();
         anim = model.GetComponent<Animator>();
         rigid = GetComponent<Rigidbody> ();
+        model = modelList[0];
     }
 
     // Update is called once per frame
