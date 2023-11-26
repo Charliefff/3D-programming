@@ -7,6 +7,7 @@ public class DashBoardController : MonoBehaviour
     public GameObject DashBoard;
     private UIControler uiController;
     public static bool dashBoardEnable = true;
+    
     // Start is called before the first frame update
     void Start()
     {
