@@ -20,7 +20,7 @@ public class BattleControl : BattleBase
     private bool canMove;
     private GameObject Target;
     private Quaternion initialRotation;
-    private int oldIndex = -1;
+    
 
     private void ChooseTarget()
     {
