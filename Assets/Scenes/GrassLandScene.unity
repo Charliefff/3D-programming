@@ -428,7 +428,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 90386274}
-  - {fileID: 1583054975}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -505,7 +504,6 @@ MonoBehaviour:
   - {fileID: 1514456976}
   - {fileID: 358196322}
   - {fileID: 1661566840}
-  loadingController: {fileID: 0}
 --- !u!114 &90386276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1217,6 +1215,7 @@ MonoBehaviour:
   enemyParent: {fileID: 353843624}
   enemy: {fileID: 361186322}
   enemyAni: {fileID: 361186327}
+  enemyID: 1
 --- !u!135 &353843626
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1971,6 +1970,69 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 086d4757dabdd8149a7efa032cc14ca7, type: 3}
   m_PrefabInstance: {fileID: 1227028401}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &748858298
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 748858300}
+  - component: {fileID: 748858299}
+  m_Layer: 0
+  m_Name: Base
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &748858299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 748858298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d21185382736e9a4e9f078e918259c82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  consumables:
+    keys: []
+    values: []
+  weapons:
+    keys: []
+    values: []
+  abilities:
+    keys: []
+    values: []
+  enemies:
+    keys: []
+    values: []
+  skills:
+    keys: []
+    values: []
+  states:
+    keys: []
+    values: []
+--- !u!4 &748858300
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 748858298}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1583054975}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &794718768
 GameObject:
   m_ObjectHideFlags: 0
@@ -2272,6 +2334,7 @@ MonoBehaviour:
   enemyParent: {fileID: 916226464}
   enemy: {fileID: 1427833385}
   enemyAni: {fileID: 1427833386}
+  enemyID: 2
 --- !u!135 &916226466
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4939,17 +5002,17 @@ RectTransform:
   m_GameObject: {fileID: 1583054974}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1432553245}
-  m_Father: {fileID: 55149434}
+  m_Father: {fileID: 748858300}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 0}
 --- !u!114 &1583054976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7391,3 +7454,4 @@ SceneRoots:
   - {fileID: 621760515}
   - {fileID: 353843629}
   - {fileID: 916226469}
+  - {fileID: 748858300}

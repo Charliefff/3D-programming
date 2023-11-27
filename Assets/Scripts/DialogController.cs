@@ -11,7 +11,7 @@ public class DialogController : MonoBehaviour
     public TextMeshProUGUI dialogText;
     public GameObject[] option = new GameObject[3];
     public TextMeshProUGUI[] optionText = new TextMeshProUGUI[3];
-    public LoadingController loadingController;
+    private LoadingController loadingController;
     private bool selectOption;
     private List<int> optionList = new List<int>();
     

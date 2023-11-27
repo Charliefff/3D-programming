@@ -1,20 +1,27 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemyController : MonoBehaviour
 {
     public GameObject enemyParent;
     public GameObject enemy;
     public Animator enemyAni;
+    public int enemyID;
 
 
     private float counter = 0f;
     private float waitTime = 0f;
     private float moveDistance;
     private bool moveFlag;
+    private LoadingController loadingController;
 
     // Start is called before the first frame update
     void Start()
     {
+        loadingController = GameObject.FindObjectOfType<LoadingController>();
+
         waitTime = Random.Range(1f, 5f);
         counter = 0f; 
         moveFlag = false;
@@ -51,6 +58,18 @@ public class EnemyController : MonoBehaviour
                 counter = 0f;
                 enemyAni.SetBool("walk", false);
             }
+        }
+    }
+
+    void OnTriggerEnter(Collider otherObject)
+    {
+        if(otherObject.name == "PlayerHandle")
+        {
+            Base.sceneName = SceneManager.GetActiveScene().name;
+            Base.enemyID = enemyID;
+            Base.playerVec = GameObject.Find("PlayerHandle").GetComponent<Transform>().position;
+            
+            loadingController.SwitchScene("BattleDemo", false);
         }
     }
 }
