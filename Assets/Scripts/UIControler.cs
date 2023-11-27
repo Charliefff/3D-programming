@@ -34,6 +34,11 @@ public class UIControler : MonoBehaviour
         eventSystem.SetSelectedGameObject(null);
     }
 
+    public void Dashboard_state(){
+        DashBoard[Dashboard_index].SetActive(false);        
+        DashBoard[0].SetActive(true);
+        Dashboard_index = 0;     
+    }
     public void Dashboard_item(){
         DashBoard[Dashboard_index].SetActive(false);        
         DashBoard[1].SetActive(true);

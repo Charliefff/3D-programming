@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BattleScene.unity
     guid: 23248f2398b99df4ea24eb838fa649a8
+  - enabled: 1
+    path: Assets/Scenes/GrassLandScene.unity
+    guid: 84dc31f28bcbef047a219345498c4c65
+  - enabled: 1
+    path: Assets/Scenes/BattleDemo.unity
+    guid: 44890247e5055364c9a4e65d03d06785
   m_configObjects: {}

@@ -29,6 +29,16 @@ public class Base : MonoBehaviour
     public static int enemyID;
     public static string sceneName;
     public static string Bagdatapath = "../Json/Bagjson";
+    void Awake(){
+        for(int i=0;i<4;i++){
+            player[i] = new Ability();
+        }
+        
+        player[0].SetAbility("Actor1", 2, 89, 100, 20, 50, 3, 10, 50, 10, 20, 30);
+        player[1].SetAbility("Actor2", 2, 89, 100, 20, 50, 3, 10, 50, 10, 20, 30);
+        player[2].SetAbility("Actor3", 2, 89, 100, 20, 50, 3, 10, 50, 10, 20, 30);
+        player[3].SetAbility("Actor4", 2, 89, 100, 20, 50, 3, 10, 50, 10, 20, 30);
+    }
     void Start()
     {
 
