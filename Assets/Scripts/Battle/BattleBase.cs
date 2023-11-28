@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Purchasing;
 using System.Linq;
+using static UnityEngine.GraphicsBuffer;
 
 public class BattleBase : MonoBehaviour
 {
@@ -15,14 +16,11 @@ public class BattleBase : MonoBehaviour
 
 
     //¾Ô°«±±¨î
-    
-    
+
+    protected bool AnimationEnd = false;
     private GameObject[] Monsters;
     private GameObject[] Players;
-    //private void Movement
-    //{
-        
-    //}
+    protected int CurrentIndex = 0;
     protected List<GameObject> MonstersList;
     protected List<GameObject> PlayersList;
     protected List<GameObject> ObjList;
@@ -32,7 +30,7 @@ public class BattleBase : MonoBehaviour
 
   
 
-    public void Start()
+    public void Awake()
     {
         
         Monsters = GameObject.FindGameObjectsWithTag("Enemy");
@@ -72,6 +70,7 @@ public class BattleBase : MonoBehaviour
                          .Select(x => x.obj)
                          .ToList();
     }
+
 
 
 }

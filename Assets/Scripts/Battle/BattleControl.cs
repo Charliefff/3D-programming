@@ -10,148 +10,153 @@ using static UnityEngine.GraphicsBuffer;
 
 public class BattleControl : BattleBase
 {
-    private int CurrentIndex = 0;
+    
     private CharacterStats characterStats;
     private bool temp;
     private new string name;
     private Vector3 tempPos;
     private Quaternion tempRot;
     private Vector3 targetPos;
-    private bool canMove;
-    private GameObject Target;
-    private Quaternion initialRotation;
-    
+    private GameObject moveobj;
+    private GameObject oldobj;
+    private GameObject oldobj2;
+    private bool previousStateIsAttack = false;
 
-    private void ChooseTarget()
+    private void Start()
     {
-        GameObject moveobj = ObjList[CurrentIndex];
-        string tag = moveobj.tag;
-        tempPos = moveobj.transform.position;
-        initialRotation = moveobj.transform.rotation;
-        if (tag == "Enemy" && PlayersList.Count > 0)
+        if (CurrentIndex == 0)
         {
-            Target = PlayersList[1];
-        }
-        if (tag == "Player" && MonstersList.Count > 0)
-        {
-            int randomIndex = Random.Range(0, MonstersList.Count);
-            Target = MonstersList[randomIndex];
-        }
-    }
-
-    IEnumerator ResetAnimationParameter(string paramName)
-    {
-        yield return new WaitForSeconds(2f);
-        ani.SetBool(paramName, false);
-    }
-
-    public void MoveTo()
-    {
-        if (canMove)
-        {
-            
-            GameObject moveobj = ObjList[CurrentIndex];
-            GameObject targetSubObj = Target.transform.GetChild(0).gameObject;
-            GameObject moveSubOnj = moveobj.transform.GetChild(0).gameObject;
-            string aniName = moveobj.name;
-  
-            //攻擊腳色特效
-            if (moveSubOnj.transform.Find("Portal green"))
+            moveobj = ObjList[CurrentIndex];
+            GameObject moveChild = moveobj.transform.GetChild(0).gameObject;
+            if (moveChild.transform.Find("Portal green"))
             {
 
-                Transform portalGreen = moveSubOnj.transform.Find("Portal green");
+                Transform portalGreen = moveChild.transform.Find("Portal green");
                 if (portalGreen != null)
                 {
                     portalGreen.gameObject.SetActive(true);
                 }
 
             }
-            else
-                Debug.Log("NotGet ");
-
-            ani.SetBool(aniName, true);
-
-            //改成加入event
-            StartCoroutine(ResetAnimationParameter(aniName));
-            targetSubObj.GetComponent<CharAbility>().HP -= 60 / 5;
-            
-            CurrentIndex += 1;
-            canMove = false;
-            if (CurrentIndex >= ObjList.Count)
-                CurrentIndex = 0;
-
         }
-    }
-
-
-    public void Awake()
-    {
-        ani = GetComponent<Animator>();
     }
     public void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.F1))
-        {
-            name = "F1";
-            temp = ani.GetBool(name);
-            ani.SetBool(name, !temp);
-
-        }
-        if (Input.GetKeyDown(KeyCode.F2))
-        {
-            name = "F2";
-            temp = ani.GetBool(name);
-            ani.SetBool(name, !temp);
-        }
-        if (Input.GetKeyDown(KeyCode.F3))
-        {
-
-        }
-        if(Input.GetKeyDown(KeyCode.F4))
-        {
-            name = "F4";
-            temp = ani.GetBool(name);
-            ani.SetBool(name, !temp);
-        }
-        if(Input.GetKeyDown(KeyCode.F5))
-        {
-
-        }
-        if( Input.GetKeyDown(KeyCode.F6))
-        {
-            name = "F6";
-            temp = ani.GetBool(name);
-            ani.SetBool(name , !temp);
-        }
         if (Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return))
         {
-            if (!canMove)
-                ChooseTarget();
-            canMove = true;
-        }
-        if (gameObject.GetComponent<CharAbility>().HP <= 0)
-        {
-
-            GameObject father_obj;
-            father_obj = gameObject.transform.parent.gameObject;
-            name = "HP";
-            float num = 0f; 
-            ani.SetFloat(name, num);
-            
-            if (father_obj.tag == "Enemy")
+            moveobj = ObjList[CurrentIndex];
+            Movable();
+            GameObject moveChild = moveobj.transform.GetChild(0).gameObject;
+            if (moveChild.transform.Find("Portal green"))
             {
-                Destroy(father_obj, 4f);
+                Transform portalGreen = moveChild.transform.Find("Portal green");
+                if (portalGreen != null)
+                {
+                    portalGreen.gameObject.SetActive(false);
+                }
             }
-            else
-                Destroy(gameObject, 4f);
         }
 
+        Updateportal();
 
-
-
-        MoveTo();
     }
 
+
+    //控制腳色轉換
+    public void Updateportal()
+    {
+        Animator Ani = moveobj.transform.GetChild(0).GetComponent<Animator>();
+        var stateInfo = Ani.GetCurrentAnimatorStateInfo(0);
+
+        // 檢查當前狀態是否為 idle 且前一狀態為 attack
+        if (stateInfo.IsName("Idle") && previousStateIsAttack)
+        {
+            CurrentIndex += 1;
+            if (CurrentIndex >= ObjList.Count)
+            {
+                CurrentIndex = 0;
+            }
+                
+            
+            //判斷死亡
+            if (ObjList[CurrentIndex].transform.GetChild(0).GetComponent<CharAbility>().HP <= 0)
+            {
+                CurrentIndex += 1;
+                if (CurrentIndex >= ObjList.Count)
+                {
+                    CurrentIndex = 0;
+                }
+                    
+            }
+            else
+            {
+                moveobj = ObjList[CurrentIndex];
+                GameObject moveChild = moveobj.transform.GetChild(0).gameObject;
+                if (moveChild.transform.Find("Portal green"))
+                {
+                    Transform portalGreen = moveChild.transform.Find("Portal green");
+
+                    if (portalGreen != null)
+                    {
+                        portalGreen.gameObject.SetActive(true);
+                    }
+                }
+                previousStateIsAttack = false;
+            }
+                
+        }
+        else if (stateInfo.IsName("Attack"))
+        {
+            previousStateIsAttack = true;
+        }
+    }
+
+    public void Movable()
+    {
+        GameObject ChildObj = moveobj.transform.GetChild(0).gameObject;
+        if (moveobj.name == "Sphere1")
+        {
+            BattleObj1 script = ChildObj.GetComponent<BattleObj1>();
+            if (script != null)
+            {
+                script.canMove = true;
+            }
+        }
+        if (moveobj.name == "Sphere2")
+        {
+            BattleObj2 script = ChildObj.GetComponent<BattleObj2>();
+            if (script != null)
+            {
+                script.canMove = true;
+            }
+        }
+
+        if (moveobj.name == "Sphere3")
+        {
+            BattleObj3 script = ChildObj.GetComponent<BattleObj3>();
+            if (script != null)
+            {
+                script.canMove = true;
+            }
+        }
+        if (moveobj.name == "Sphere4")
+        {
+            BattleObj4 script = ChildObj.GetComponent<BattleObj4>();
+            if (script != null)
+            {
+                script.canMove = true;
+            }
+        }
+        else
+        {
+            BattleObjMonster script = ChildObj.GetComponent<BattleObjMonster>();
+            if (script != null)
+            {
+                script.canMove = true;
+            }
+        }
+            
+    }   
 
 }
