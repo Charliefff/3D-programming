@@ -2,7 +2,7 @@
   "1": {
     "name": "Health Potion(small)",
     "type": "Consumable",
-    "quantity": "Common",
+    "quality": "Common",
     "description": "Heals 50 HP",
     "sellprice": 50,
     "buyPrice": 100,
@@ -14,12 +14,12 @@
     "speed": 0,
     "immunity": "",
     "duration": 0,
-    "image": "https://i.imgur.com/5QZQ9XV.png"
+    "image": "512x_vial_red"
   },
   "2": {
     "name": "Health Potion(medium)",
     "type": "Consumable",
-    "quantity": "Common",
+    "quality": "Common",
     "description": "Heals 100 HP",
     "sellprice": 75,
     "buyPrice": 150,
@@ -31,12 +31,12 @@
     "speed": 0,
     "immunity": "",
     "duration": 0,
-    "image": "https://i.imgur.com/5QZQ9XV.png"
+    "image": "512x_bottle_red"
   },
   "3": {
     "name": "Health Potion(large)",
     "type": "Consumable",
-    "quantity": "Common",
+    "quality": "Common",
     "description": "Heals 200 HP",
     "sellprice": 100,
     "buyPrice": 200,
@@ -48,12 +48,12 @@
     "speed": 0,
     "immunity": "",
     "duration": 0,
-    "image": "https://i.imgur.com/5QZQ9XV.png"
+    "image": "512x_bottle2_red"
   },
   "4": {
     "name": "Mana Potion(small)",
     "type": "Consumable",
-    "quantity": "Common",
+    "quality": "Common",
     "description": "Heals 50 MP",
     "sellprice": 50,
     "buyPrice": 100,
@@ -65,12 +65,12 @@
     "speed": 0,
     "immunity": "",
     "duration": 0,
-    "image": "https://i.imgur.com/5QZQ9XV.png"
+    "image": "512x_vial_blue"
   },
   "5": {
     "name": "Mana Potion(medium)",
     "type": "Consumable",
-    "quantity": "Common",
+    "quality": "Common",
     "description": "Heals 100 MP",
     "sellprice": 75,
     "buyPrice": 150,
@@ -82,12 +82,12 @@
     "speed": 0,
     "immunity": "",
     "duration": 0,
-    "image": "https://i.imgur.com/5QZQ9XV.png"
+    "image": "512x_bottle_blue"
   },
   "6": {
     "name": "Mana Potion(large)",
     "type": "Consumable",
-    "quantity": "Common",
+    "quality": "Common",
     "description": "Heals 200 MP",
     "sellprice": 100,
     "buyPrice": 200,
@@ -99,12 +99,12 @@
     "speed": 0,
     "immunity": "",
     "duration": 0,
-    "image": "https://i.imgur.com/5QZQ9XV.png"
+    "image": "512x_bottle2_blue"
   },
   "7": {
-    "name": "復活吊飾",
+    "name": "復活藥水",
     "type": "Consumable",
-    "quantity": "Rare",
+    "quality": "Rare",
     "description": "復活",
     "sellprice": 1000,
     "buyPrice": 3000,
@@ -116,12 +116,12 @@
     "speed": 0,
     "immunity": "",
     "duration": 0,
-    "image": "https://i.imgur.com/N8Sn3N1.png"
+    "image": "512x_flask1_blue"
   },
   "8": {
     "name": "速度藥水",
     "type": "Consumable",
-    "quantity": "Rare",
+    "quality": "Rare",
     "description": "速度上升10% 3 回合",
     "sellprice": 200,
     "buyPrice": 600,
@@ -133,12 +133,12 @@
     "speed": 10,
     "immunity": "",
     "duration": 3,
-    "image": "https://i.imgur.com/N8Sn3N1.png"
+    "image": "512x_decanter_glass_empty"
   },
   "9": {
     "name": "攻擊藥水",
     "type": "Consumable",
-    "quantity": "Rare",
+    "quality": "Rare",
     "description": "攻擊上升10% 3 回合",
     "sellprice": 250,
     "buyPrice": 500,
@@ -150,12 +150,12 @@
     "speed": 0,
     "immunity": "",
     "duration": 3,
-    "image": "https://i.imgur.com/N8Sn3N1.png"
+    "image": "512x_decanter_glass_empty"
   },
   "10": {
     "name": "攻擊藥水(大)",
     "type": "Consumable",
-    "quantity": "Rare",
+    "quality": "Rare",
     "description": "攻擊上升20% 5 回合",
     "sellprice": 250,
     "buyPrice": 500,
@@ -167,12 +167,12 @@
     "speed": 0,
     "immunity": "",
     "duration": 5,
-    "image": "https://i.imgur.com/N8Sn3N1.png"
+    "image": "512x_decanter_glass_empty"
   },
   "11": {
     "name": "防禦藥水",
     "type": "Consumable",
-    "quantity": "Rare",
+    "quality": "Rare",
     "description": "防禦力上升10% 3 回合",
     "sellprice": 250,
     "buyPrice": 500,
@@ -184,12 +184,12 @@
     "speed": 0,
     "immunity": "",
     "duration": 3,
-    "image": "https://i.imgur.com/N8Sn3N1.png"
+    "image": "512x_decanter_glass_empty"
   },
   "12": {
     "name": "防禦藥水(大)",
     "type": "Consumable",
-    "quantity": "Rare",
+    "quality": "Rare",
     "description": "防禦力上升20% 5 回合",
     "sellprice": 250,
     "buyPrice": 500,
@@ -201,12 +201,12 @@
     "speed": 0,
     "immunity": "",
     "duration": 5,
-    "image": "https://i.imgur.com/N8Sn3N1.png"
+    "image": "512x_decanter_glass_empty"
   },
   "13": {
     "name": "魔法藥水",
     "type": "Consumable",
-    "quantity": "Rare",
+    "quality": "Rare",
     "description": "魔法攻擊力上升10% 3 回合",
     "sellprice": 300,
     "buyPrice": 600,
@@ -218,12 +218,12 @@
     "speed": 0,
     "immunity": "",
     "duration": 3,
-    "image": "https://i.imgur.com/N8Sn3N1.png"
+    "image": "512x_decanter_glass_empty"
   },
   "14": {
     "name": "魔法藥水(大)",
     "type": "Consumable",
-    "quantity": "Rare",
+    "quality": "Rare",
     "description": "魔法攻擊力上升20% 5 回合",
     "sellprice": 300,
     "buyPrice": 600,
@@ -235,12 +235,12 @@
     "speed": 0,
     "immunity": "",
     "duration": 5,
-    "image": "https://i.imgur.com/N8Sn3N1.png"
+    "image": "512x_decanter_glass_empty"
   },
   "15": {
     "name": "免疫藥水",
     "type": "Consumable",
-    "quantity": "Epic",
+    "quality": "Epic",
     "description": "提供3回合內免疫所有負面狀態效果",
     "sellprice": 500,
     "buyPrice": 1000,
@@ -252,12 +252,12 @@
     "speed": 0,
     "immunity": "all",
     "duration": 3,
-    "image": "https://i.imgur.com/N8Sn3N1.png"
+    "image": "512x_decanter_glass_empty"
   },
   "16": {
     "name": "全能藥水",
     "type": "Consumable",
-    "quantity": "Legendary",
+    "quality": "Legendary",
     "description": "所有屬性提升10% 5 回合",
     "sellprice": 600,
     "buyPrice": 2000,
@@ -269,6 +269,6 @@
     "speed": 10,
     "immunity": "all",
     "duration": 5,
-    "image": "https://i.imgur.com/N8Sn3N1.png"
+    "image": "512x_decanter_glass_empty"
   }
 }

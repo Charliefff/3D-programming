@@ -40,13 +40,6 @@ public class Ability
 
     [JsonProperty("speed")]
     public int Speed { get; set; }
-
-    [JsonProperty("immunity")]
-    public string Immunity { get; set; }
-
-    [JsonProperty("duration")]
-    public int Duration { get; set; }
-
  
     [JsonProperty("image")]
     public string Image { get; set; }
@@ -64,8 +57,6 @@ public class Ability
         int def, 
         int mag, 
         int spd, 
-        string imu = "", 
-        int dur = 0,
         string img = "")
     {
         Name = name;
@@ -80,8 +71,6 @@ public class Ability
         Defense = def;
         Magic = mag;
         Speed = spd;
-        Immunity = imu;
-        Duration = dur;
         Image = img;
     }
 
