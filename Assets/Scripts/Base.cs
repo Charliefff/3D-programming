@@ -7,45 +7,83 @@ using Newtonsoft.Json;
 
 public class Base : MonoBehaviour
 {
-
-    public SerializableDictionary<string, Consumable> consumables = new();
-    public SerializableDictionary<string, Weapon> weapons = new();
-    public SerializableDictionary<string, Ability> abilities = new();
-    public SerializableDictionary<string, Enemy> enemies = new();
-    public SerializableDictionary<string, Skill> skills = new();
-    public SerializableDictionary<string, State> states = new();
-
-    //public SerializableDictionary<string, Monster>
     public static Ability[] player = new Ability[4];
-
-    public static string consumables_path = "../Json/consumable.json";
-    public static string weapons_path = "../Json/weapon.json";
-    public static string abilities_path = "";
-    public static string enemies_path = "../Json/enemy.json";
-    public static string skills_path = "../Json/skill.json";
-    public static string states_path = "../Json/state.json";
-
+    public static Dictionary<string, int> bagConsumable = new Dictionary<string, int>();
+    public static Dictionary<string, int> bagWeapons = new Dictionary<string, int>();
+    public static int money;
     public static Vector3 playerVec;
     public static int enemyID;
     public static string sceneName;
     public static string Bagdatapath = "../Json/Bagjson";
+
+    public static Dictionary<string, Consumable> dicConsumable;
+    public static Dictionary<string, Weapon> dicWeapon;
+    public static Dictionary<string, Ability> dicAbility;
+    public static Dictionary<string, Enemy> dicEnemy;
+    public static Dictionary<string, Skill> dicSkill;
+    public static Dictionary<string, State> dicState;
+
+
+    private SerializableDictionary<string, Consumable> consumables = new();
+    private SerializableDictionary<string, Weapon> weapons = new();
+    private SerializableDictionary<string, Ability> abilities = new();
+    private SerializableDictionary<string, Enemy> enemies = new();
+    private SerializableDictionary<string, Skill> skills = new();
+    private SerializableDictionary<string, State> states = new();
+    //public SerializableDictionary<string, Monster>
+
+    private string consumables_path = "../Json/consumable.json";
+    private string weapons_path = "../Json/weapon.json";
+    private string abilities_path = "";
+    private string enemies_path = "../Json/enemy.json";
+    private string skills_path = "../Json/skill.json";
+    private string states_path = "../Json/state.json";
     void Awake(){
+        DataLoader();
+        dicConsumable = consumables.ToDictionary();
+        dicWeapon = weapons.ToDictionary();
+        dicAbility = abilities.ToDictionary();
+        dicEnemy = enemies.ToDictionary();
+        dicSkill = skills.ToDictionary();
+        dicState = states.ToDictionary();
+
         for(int i=0;i<4;i++){
             player[i] = new Ability();
         }
         
-        player[0].SetAbility("Actor1", 2, 89, 100, 20, 50, 3, 10, 50, 10, 20, 30);
-        player[1].SetAbility("Actor2", 2, 89, 100, 20, 50, 3, 10, 50, 10, 20, 30);
-        player[2].SetAbility("Actor3", 2, 89, 100, 20, 50, 3, 10, 50, 10, 20, 30);
-        player[3].SetAbility("Actor4", 2, 89, 100, 20, 50, 3, 10, 50, 10, 20, 30);
+        player[0].SetAbility("Actor1", 2, 20, 20, 8, 50, 8, 10, 50, 10, 20, 30);
+        player[1].SetAbility("Actor2", 5, 52, 120, 20, 50, 10, 17, 50, 10, 20, 30);
+        player[2].SetAbility("Actor3", 3, 70, 70, 40, 50, 3, 10, 50, 10, 20, 30);
+        player[3].SetAbility("Actor4", 7, 89, 170, 30, 50, 7, 25, 50, 10, 20, 30);
+
+        bagConsumable["1"] = 3;
+        bagConsumable["2"] = 5;
+        bagConsumable["4"] = 2;
+        bagConsumable["15"] = 7;
+        bagConsumable["7"] = 1;
+        bagConsumable["14"] = 8;
+        bagConsumable["16"] = 10;
+        bagConsumable["13"] = 22;
+        bagConsumable["3"] = 1;
+        bagConsumable["5"] = 10;
+
+        bagWeapons["1"] = 1;
+        bagWeapons["2"] = 1;
+        bagWeapons["3"] = 1;
+        bagWeapons["4"] = 1;
+        bagWeapons["8"] = 1;
+        bagWeapons["10"] = 1;
+        bagWeapons["15"] = 1;
+        bagWeapons["16"] = 1;
+        bagWeapons["21"] = 1;
+
+        player[0].WeaponList.Add("1");
     }
     void Start()
     {
-        
-        DataLoader();
         DontDestroyOnLoad(this.gameObject);
-        playerVec = new Vector3(0,0,0);
 
+        playerVec = new Vector3(0,0,0);
     }
 
     void Update()
@@ -88,7 +126,6 @@ public class Base : MonoBehaviour
         return loader.LoadFromJson(jsonContent);
     }
 }
-
 public class JsonLoader<T>
 {
     public SerializableDictionary<string, T> LoadFromJson(string jsonContent)
