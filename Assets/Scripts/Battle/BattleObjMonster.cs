@@ -38,7 +38,9 @@ public class BattleObjMonster : BattleBase
         string tag = transform.parent.tag;
         if (tag == "Enemy" && PlayersList.Count > 0)
         {
-            Target = PlayersList[1];
+            int randomIndex = Random.Range(0, PlayersList.Count);
+
+            Target = PlayersList[randomIndex];
         }
         if (tag == "Player" && MonstersList.Count > 0)
         {
@@ -51,7 +53,6 @@ public class BattleObjMonster : BattleBase
     {
         
         string tag = transform.parent.tag;
-        Debug.Log(tag);
         ChooseTarget();
         if (Target == null)
         {

@@ -1,89 +1,96 @@
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
+using TMPro;
 
 public class BattleUI : BattleBase
 {
-    protected List<int> PlayerStateList = new List<int>();
-    protected List<int> MonsterStateList = new List<int>();
-    private List<int> previousPlayerStateList;
-    private List<int> previousMonsterStateList;
 
-    void Start()
-    {
-        
-        InitializeStateList(PlayersList, PlayerStateList);
-        InitializeStateList(MonstersList, MonsterStateList);
-
-        previousPlayerStateList = new List<int>(PlayerStateList);
-        previousMonsterStateList = new List<int>(MonsterStateList);
-    }
+    private float _lerpSpeed = 3;
 
     public void Update()
     {
-        UpdateState(PlayersList, PlayerStateList);
-        UpdateState(MonstersList, MonsterStateList);
+        UpdateBloodUI();
+        UpdateAbility();
+    }
 
-        if (!AreListsEqual(PlayerStateList, previousPlayerStateList))
-        {
-            Debug.Log("Player State Changed: " + PlayerStateList);
-            previousPlayerStateList = new List<int>(PlayerStateList); 
-        }
 
-        if (!AreListsEqual(MonsterStateList, previousMonsterStateList))
+    private void UpdateBloodUI()
+    {
+        foreach (var hpItem in HPList)
         {
-            Debug.Log("Monster State Changed: " + MonsterStateList);
-            previousMonsterStateList = new List<int>(MonsterStateList);
+            if (hpItem == null)
+            {
+                continue;
+            }
+
+            UpdateHealthBar(hpItem);
         }
     }
 
-    
-    private bool AreListsEqual(List<int> list1, List<int> list2)
+    private void UpdateHealthBar(GameObject hpItem)
     {
-        if (list1.Count != list2.Count)
+        var name = hpItem.name;
+        var bar = hpItem.GetComponent<Image>();
+        if (bar == null) return;
+
+        GameObject targetPlayer = name switch
         {
-            return false;
-        }
-        for (int i = 0; i < list1.Count; i++)
+            "Player1HP" => Player1,
+            "Player2HP" => Player2,
+            "Player3HP" => Player3,
+            "Player4HP" => Player4,
+            _ => Monster,
+        };
+
+        if (targetPlayer != null)
         {
-            if (list1[i] != list2[i])
+            var charAbility = targetPlayer.GetComponent<CharAbility>();
+            if (charAbility != null)
             {
-                return false;
+                int health = charAbility.HP;
+                int maxHealth = charAbility.MaxHP;
+                bar.fillAmount = Mathf.Lerp(bar.fillAmount, (float)health / maxHealth, _lerpSpeed * Time.deltaTime);
+                UpdateText(health, maxHealth, hpItem);
+
             }
         }
-        return true;
     }
 
-    void InitializeStateList(List<GameObject> targets, List<int> stateList)
+    private void UpdateText(int health, int maxHealth, GameObject hpItem)
     {
-        foreach (var target in targets)
+        if (hpItem.transform.childCount > 0)
         {
-            if (target != null)
+            var textComponent = hpItem.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+            if (textComponent != null)
             {
-                GameObject targetChild = target.transform.GetChild(0).gameObject;
-                stateList.Add(targetChild.GetComponent<CharAbility>().HP);
+                textComponent.text = $"HP {health}/{maxHealth}";
+            }
+        }
+
+    }
+
+    private void UpdateAbility()
+    {
+
+        
+        foreach (var item in AbilityUIList)
+        {
+            if (item.name == StateObj)
+            {
+                item.SetActive(true);
             }
             else
             {
-                stateList.Add(0);
+                item.SetActive(false);
             }
         }
+
+
     }
 
-    void UpdateState(List<GameObject> target, List<int> HPList)
-    {
-        for (int i = 0; i < target.Count; i++)
-        {
-            if (target[i] != null)
-            {
-                GameObject targetChild = target[i].transform.GetChild(0).gameObject;
-                HPList[i] = targetChild.GetComponent<CharAbility>().HP;
-            }
-            else
-            {
-                HPList[i] = 0;
-            }
-        }
-    }
 
 }
+

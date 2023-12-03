@@ -41,10 +41,9 @@ public class Base : MonoBehaviour
     }
     void Start()
     {
-
+        
         DataLoader();
         DontDestroyOnLoad(this.gameObject);
-
         playerVec = new Vector3(0,0,0);
 
     }
@@ -73,7 +72,7 @@ public class Base : MonoBehaviour
 
     private void DataLoader()
     {
-        consumables = LoadJsonData<Consumable>(weapons_path);
+        consumables = LoadJsonData<Consumable>(consumables_path);
         weapons = LoadJsonData<Weapon>(weapons_path);
         enemies = LoadJsonData<Enemy>(enemies_path);
         skills = LoadJsonData<Skill>(skills_path);

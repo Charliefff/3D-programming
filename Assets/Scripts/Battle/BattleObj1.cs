@@ -59,7 +59,6 @@ public class BattleObj1 : BattleBase
     {
 
         string tag = transform.parent.tag;
-        Debug.Log(tag);
         ChooseTarget();
         if (Target == null)
         {

@@ -92,6 +92,8 @@ public class BattleControl : BattleBase
             else
             {
                 moveobj = ObjList[CurrentIndex];
+                StateObj = moveobj.name;
+
                 GameObject moveChild = moveobj.transform.GetChild(0).gameObject;
                 if (moveChild.transform.Find("Portal green"))
                 {
@@ -115,7 +117,7 @@ public class BattleControl : BattleBase
     public void Movable()
     {
         GameObject ChildObj = moveobj.transform.GetChild(0).gameObject;
-        if (moveobj.name == "Sphere1")
+        if (moveobj.name == "Player1")
         {
             BattleObj1 script = ChildObj.GetComponent<BattleObj1>();
             if (script != null)
@@ -123,7 +125,7 @@ public class BattleControl : BattleBase
                 script.canMove = true;
             }
         }
-        if (moveobj.name == "Sphere2")
+        if (moveobj.name == "Player2")
         {
             BattleObj2 script = ChildObj.GetComponent<BattleObj2>();
             if (script != null)
@@ -132,7 +134,7 @@ public class BattleControl : BattleBase
             }
         }
 
-        if (moveobj.name == "Sphere3")
+        if (moveobj.name == "Player3")
         {
             BattleObj3 script = ChildObj.GetComponent<BattleObj3>();
             if (script != null)
@@ -140,7 +142,7 @@ public class BattleControl : BattleBase
                 script.canMove = true;
             }
         }
-        if (moveobj.name == "Sphere4")
+        if (moveobj.name == "Player4")
         {
             BattleObj4 script = ChildObj.GetComponent<BattleObj4>();
             if (script != null)

@@ -6,6 +6,9 @@ TagManager:
   tags:
   - CommunicationTag
   - Enemy
+  - HP
+  - Ability
+  - MP
   layers:
   - Default
   - TransparentFX

@@ -20,11 +20,26 @@ public class BattleBase : MonoBehaviour
     protected bool AnimationEnd = false;
     private GameObject[] Monsters;
     private GameObject[] Players;
-    protected int CurrentIndex = 0;
+    private GameObject[] HP;
+    private GameObject[] AbilityUI;
+
+    protected static string StateObj;
+    protected static int CurrentIndex;
+    protected List<GameObject> HPList;
     protected List<GameObject> MonstersList;
     protected List<GameObject> PlayersList;
     protected List<GameObject> ObjList;
+    protected List<GameObject> AbilityUIList;
     protected List<int> SpeedList = new List<int> { 4, 0, 2, 3, 1 };
+
+    //抓出四隻角色
+    protected GameObject Player1 = null;
+    protected GameObject Player2 = null;
+    protected GameObject Player3 = null;
+    protected GameObject Player4 = null;
+    protected GameObject Monster = null;
+
+    
     
     //protected int HP = 100;
 
@@ -33,14 +48,23 @@ public class BattleBase : MonoBehaviour
     public void Awake()
     {
         
+        HP = GameObject.FindGameObjectsWithTag("HP");
         Monsters = GameObject.FindGameObjectsWithTag("Enemy");
         Players = GameObject.FindGameObjectsWithTag("Player");
+        AbilityUI = GameObject.FindGameObjectsWithTag("Ability");
+
+        HPList = new List<GameObject>();
         ObjList = new List<GameObject>();
         MonstersList = new List<GameObject>();
         PlayersList = new List<GameObject>();
+        AbilityUIList = new List<GameObject>();
 
         ani = GetComponent<Animator>();
 
+        for (int i = 0; i < HP.Length; i++)
+        {
+            HPList.Add(HP[i]);
+        }
         foreach (var o in Monsters)
         {
             ObjList.Add(o);
@@ -52,13 +76,41 @@ public class BattleBase : MonoBehaviour
             ObjList.Add(o);
             PlayersList.Add(o);
         }
+        foreach (var o in AbilityUI)
+        {
+            AbilityUIList.Add(o);
+        }
+
+        playergameObj();
         SortBySpeed();
-        
+
     }
 
-    public enum player
+    private void playergameObj()
     {
-        
+        for (int i = 0; i < ObjList.Count; i++)
+        {
+            if (ObjList[i].name == "Player1")
+            {
+                Player1 = ObjList[i].transform.GetChild(0).gameObject;
+            }
+            else if (ObjList[i].name == "Player2")
+            {
+                Player2 = ObjList[i].transform.GetChild(0).gameObject;
+            }
+            else if (ObjList[i].name == "Player3")
+            {
+                Player3 = ObjList[i].transform.GetChild(0).gameObject;
+            }
+            else if (ObjList[i].name == "Player4")
+            {
+                Player4 = ObjList[i].transform.GetChild(0).gameObject;
+            }
+            else
+            {
+                Monster = ObjList[i].transform.GetChild(0).gameObject;
+            }
+        }
     }
 
     //根據速度sort
