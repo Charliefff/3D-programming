@@ -44,6 +44,14 @@ public class Ability
     [JsonProperty("image")]
     public string Image { get; set; }
 
+    [JsonProperty("weapomList")]
+    public List<string> WeaponList { get; set; }
+
+    public Ability()
+    {
+        WeaponList = new List<string>();
+    }
+
     public void SetAbility(
         string name,
         int level,

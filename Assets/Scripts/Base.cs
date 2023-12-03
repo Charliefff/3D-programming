@@ -51,7 +51,7 @@ public class Base : MonoBehaviour
             player[i] = new Ability();
         }
         
-        player[0].SetAbility("Actor1", 2, 89, 100, 8, 50, 8, 10, 50, 10, 20, 30);
+        player[0].SetAbility("Actor1", 2, 20, 20, 8, 50, 8, 10, 50, 10, 20, 30);
         player[1].SetAbility("Actor2", 5, 52, 120, 20, 50, 10, 17, 50, 10, 20, 30);
         player[2].SetAbility("Actor3", 3, 70, 70, 40, 50, 3, 10, 50, 10, 20, 30);
         player[3].SetAbility("Actor4", 7, 89, 170, 30, 50, 7, 25, 50, 10, 20, 30);
@@ -65,8 +65,19 @@ public class Base : MonoBehaviour
         bagConsumable["16"] = 10;
         bagConsumable["13"] = 22;
         bagConsumable["3"] = 1;
+        bagConsumable["5"] = 10;
 
+        bagWeapons["1"] = 1;
+        bagWeapons["2"] = 1;
+        bagWeapons["3"] = 1;
+        bagWeapons["4"] = 1;
+        bagWeapons["8"] = 1;
+        bagWeapons["10"] = 1;
+        bagWeapons["15"] = 1;
+        bagWeapons["16"] = 1;
+        bagWeapons["21"] = 1;
 
+        player[0].WeaponList.Add("1");
     }
     void Start()
     {

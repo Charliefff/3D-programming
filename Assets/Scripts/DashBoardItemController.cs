@@ -10,7 +10,6 @@ public class DashBoardItemController : MonoBehaviour
     public Transform itemParent;
     public GameObject itemButton;
     public List<GameObject> itemButtonList = new List<GameObject>();
-    public Sprite newSprite;
     public Image itemImage; 
     public TextMeshProUGUI itemText; 
 
@@ -18,7 +17,7 @@ public class DashBoardItemController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ItemUpdate();
+        UpdateItem();
     }
 
     // Update is called once per frame
@@ -27,7 +26,7 @@ public class DashBoardItemController : MonoBehaviour
         
     }
 
-    public void ItemUpdate(){
+    public void UpdateItem(){
         bool isFirst = true;
         var bagConsumableSort = Base.bagConsumable.OrderBy(pair => int.Parse(pair.Key));
 
