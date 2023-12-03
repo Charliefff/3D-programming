@@ -81,9 +81,8 @@ public class Base : MonoBehaviour
     }
     void Start()
     {
-
-        DataLoader();
         DontDestroyOnLoad(this.gameObject);
+
         playerVec = new Vector3(0,0,0);
     }
 
