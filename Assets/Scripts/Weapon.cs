@@ -11,9 +11,6 @@ public class Weapon
     [JsonProperty("category")]
     public string Category { get; set; }
 
-    [JsonProperty("damage")]
-    public int Damage { get; set; }
-
     [JsonProperty("buyPrice")]
     public int BuyPrice { get; set; }
 

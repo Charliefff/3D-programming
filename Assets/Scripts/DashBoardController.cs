@@ -116,6 +116,7 @@ public class DashBoardController : MonoBehaviour
         Dashboard_index = 6;    
     }
     public void Dashboard_back(){
-        SceneManager.LoadScene("TitleSceneTest");
+        DashBoard_switch();
+        GameObject.Find("Loading").GetComponent<LoadingController>().SwitchScene("TitleScene",false);
     }
 }

@@ -3,16 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public class LoadingController : MonoBehaviour
 {
     public Animator animator;
     private bool mouseLock;
     private bool transmitPlayer;
     private bool shouldTriggerOnSceneLoaded = false;
+    private string goalScene;
 
     void Start()
     {
-        
+        goalScene = "";
     }
 
     void Update()
@@ -38,6 +40,7 @@ public class LoadingController : MonoBehaviour
     }
 
     public void SwitchScene(string sceneName, bool mouseLock = true, bool transmitPlayer = false){
+        goalScene = sceneName;
         this.mouseLock = mouseLock;
         this.transmitPlayer = transmitPlayer;
         shouldTriggerOnSceneLoaded = true;
@@ -66,6 +69,10 @@ public class LoadingController : MonoBehaviour
 
             LoadingFadeOut();
             shouldTriggerOnSceneLoaded = false;
+
+            if(goalScene == "TitleScene"){
+                Destroy(this.gameObject.transform.parent.gameObject);
+            }
         }
     }
 }
