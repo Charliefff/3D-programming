@@ -35,4 +35,7 @@ public class Enemy
 
     [JsonProperty("gold")]
     public int Gold { get; set; }
+
+    [JsonProperty("model")]
+    public string Model { get; set; }
 }

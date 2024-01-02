@@ -122,7 +122,7 @@ public class Base : MonoBehaviour
     private void GameInitialization(){
         LoadGameDic();
 
-        money = 100;
+        money = 10000;
         player[0].SetAbility("Actor1", 2, 20, 20, 8, 50, 8, 10, 50, 10, 20, 30);
         player[1].SetAbility("Actor2", 5, 52, 120, 20, 50, 10, 17, 50, 10, 20, 30);
         player[2].SetAbility("Actor3", 3, 70, 70, 40, 50, 3, 10, 50, 10, 20, 30);
