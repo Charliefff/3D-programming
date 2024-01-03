@@ -47,9 +47,17 @@ public class Ability
     [JsonProperty("weapomList")]
     public List<string> WeaponList { get; set; }
 
+    [JsonProperty("skillList")]
+    public List<string> SkillList { get; set; }
+
+    [JsonProperty("skillHistoryList")]
+    public List<string> SkillHistoryList { get; set; }
+
     public Ability()
     {
         WeaponList = new List<string>();
+        SkillList = new List<string>();
+        SkillHistoryList = new List<string>();
     }
 
     public void SetAbility(

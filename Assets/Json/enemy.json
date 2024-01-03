@@ -9,7 +9,8 @@
     "speed": 20,
     "item": "",
     "skill": "",
-    "gold": 10
+    "gold": 10,
+    "model":""
   },
   "2": {
     "name": "獸人",
@@ -21,7 +22,8 @@
     "speed": 15,
     "item": "",
     "skill": "",
-    "gold": 20
+    "gold": 20,
+    "model":""
   },
   "3": {
     "name": "巨龍",
@@ -33,7 +35,8 @@
     "speed": 30,
     "item": "",
     "skill": "",
-    "gold": 100
+    "gold": 100,
+    "model":""
   },
   "4": {
     "name": "巫師",
@@ -45,7 +48,8 @@
     "speed": 25,
     "item": "",
     "skill": "",
-    "gold": 200
+    "gold": 200,
+    "model":""
   },
   "5": {
     "name": "骷髏戰士",
@@ -57,7 +61,8 @@
     "speed": 18,
     "item": "",
     "skill": "",
-    "gold": 300
+    "gold": 300,
+    "model":""
   },
   "6": {
     "name": "火精靈",
@@ -69,7 +74,8 @@
     "speed": 23,
     "item": "",
     "skill": "",
-    "gold": 15
+    "gold": 15,
+    "model":""
   },
   "7": {
     "name": "冰巨人",
@@ -81,7 +87,8 @@
     "speed": 14,
     "item": "",
     "skill": "",
-    "gold": 100
+    "gold": 100,
+    "model":""
   },
   "8": {
     "name": "狼人",
@@ -93,7 +100,8 @@
     "speed": 18,
     "item": "",
     "skill": "",
-    "gold": 80
+    "gold": 80,
+    "model":""
   },
   "9": {
     "name": "巫妖",
@@ -105,7 +113,8 @@
     "speed": 22,
     "item": "",
     "skill": "",
-    "gold": 250
+    "gold": 250,
+    "model":""
   },
   "10": {
     "name": "蝙蝠怪",
@@ -117,7 +126,8 @@
     "speed": 30,
     "item": "",
     "skill": "",
-    "gold": 70
+    "gold": 70,
+    "model":""
   },
   "11": {
     "name": "幽靈",
@@ -129,7 +139,8 @@
     "speed": 25,
     "item": "",
     "skill": "",
-    "gold": 150
+    "gold": 150,
+    "model":""
   },
   "12": {
     "name": "狼",
@@ -141,7 +152,8 @@
     "speed": 28,
     "item": "",
     "skill": "",
-    "gold": 25
+    "gold": 25,
+    "model":""
   },
   "13": {
     "name": "巨蠍",
@@ -153,7 +165,8 @@
     "speed": 20,
     "item": "",
     "skill": "",
-    "gold": 280
+    "gold": 280,
+    "model":""
   },
   "14": {
     "name": "水精靈",
@@ -165,7 +178,8 @@
     "speed": 26,
     "item": "",
     "skill": "",
-    "gold": 220
+    "gold": 220,
+    "model":""
   },
   "15": {
     "name": "岩石巨人",
@@ -177,7 +191,8 @@
     "speed": 16,
     "item": "",
     "skill": "",
-    "gold": 400
+    "gold": 400,
+    "model":""
   },
   "16": {
     "name": "巫師師傅",
@@ -189,7 +204,8 @@
     "speed": 14,
     "item": "",
     "skill": "",
-    "gold": 500
+    "gold": 500,
+    "model":""
   },
   "17": {
     "name": "小精靈",
@@ -201,7 +217,8 @@
     "speed": 25,
     "item": "",
     "skill": "",
-    "gold": 10
+    "gold": 10,
+    "model":""
   },
   "18": {
     "name": "火元素",
@@ -213,7 +230,8 @@
     "speed": 18,
     "item": "",
     "skill": "",
-    "gold": 350
+    "gold": 350,
+    "model":""
   },
   "19": {
     "name": "風精靈",
@@ -225,7 +243,8 @@
     "speed": 22,
     "item": "",
     "skill": "",
-    "gold": 260
+    "gold": 260,
+    "model":""
   },
   "20": {
     "name": "魔法獸",
@@ -237,6 +256,7 @@
     "speed": 17,
     "item": "",
     "skill": "",
-    "gold": 380
+    "gold": 380,
+    "model":""
   }
 }

@@ -4,12 +4,17 @@ using UnityEngine;
 using System.IO;
 using System.Text.Json;
 using Newtonsoft.Json;
+using UnityEngine.SceneManagement;
+using System;
+
 
 public class Base : MonoBehaviour
 {
     public static Ability[] player = new Ability[4];
     public static Dictionary<string, int> bagConsumable = new Dictionary<string, int>();
     public static Dictionary<string, int> bagWeapons = new Dictionary<string, int>();
+    public static Dictionary<string, SaveData> saveDataDictionary = new Dictionary<string, SaveData>();
+
     public static int money;
     public static Vector3 playerVec;
     public static int enemyID;
@@ -31,6 +36,8 @@ public class Base : MonoBehaviour
     private SerializableDictionary<string, Skill> skills = new();
     private SerializableDictionary<string, State> states = new();
     //public SerializableDictionary<string, Monster>
+    private SerializableDictionary<string, SaveData> saveData = new();
+
 
     private string consumables_path = "../Json/consumable.json";
     private string weapons_path = "../Json/weapon.json";
@@ -51,6 +58,71 @@ public class Base : MonoBehaviour
             player[i] = new Ability();
         }
         
+        GameInitialization();   
+    }
+    void Start()
+    {
+        DontDestroyOnLoad(this.gameObject);
+        playerVec = new Vector3(0,0,0);
+
+       
+    }
+
+    void Update()
+    {
+
+    }
+
+    public static void SaveGame(int index)
+    {
+        SaveData temp = new SaveData();
+        temp.Money = money;
+        temp.BagConsumable = bagConsumable;
+        temp.BagWeapons = bagWeapons;
+
+        DateTime now = DateTime.Now;
+        temp.Day = now.ToString("yyyy/MM/dd HH:mm:ss");
+
+        playerVec = GameObject.Find("PlayerHandle").GetComponent<Transform>().position;
+        temp.PlayerPosX = playerVec.x;
+        temp.PlayerPosY = playerVec.y;
+        temp.PlayerPosZ = playerVec.z;
+
+        temp.SceneName = SceneManager.GetActiveScene().name;
+        for(int i=0;i<4;i++){
+            temp.Player[i] = player[i];
+        }
+
+        saveDataDictionary["" + index] = temp;
+
+        string jsonOutput = JsonConvert.SerializeObject(saveDataDictionary, Formatting.Indented);
+        File.WriteAllText(Application.dataPath + "/Json/Data.json", jsonOutput);        
+    }
+
+    public static void LoadGame(int index)
+    {
+        money = saveDataDictionary["" + index].Money;
+        for(int i=0; i<4; i++){
+            player[i] = saveDataDictionary["" + index].Player[i];
+        }
+
+        sceneName = saveDataDictionary["" + index].SceneName;
+        playerVec.x = saveDataDictionary["" + index].PlayerPosX;
+        playerVec.y = saveDataDictionary["" + index].PlayerPosY+0.1f;
+        playerVec.z = saveDataDictionary["" + index].PlayerPosZ;
+
+        GameObject.Find("Loading").GetComponent<LoadingController>().SwitchScene(sceneName,true,true);
+    }
+
+    public static void LoadGameDic(){
+        string jsonContent = File.ReadAllText(Application.dataPath + "/Json/Data.json");   
+        saveDataDictionary = JsonConvert.DeserializeObject<Dictionary<string, SaveData>>(jsonContent);
+    }
+
+    private void GameInitialization(){
+        LoadGameDic();
+
+        money = 10000;
         player[0].SetAbility("Actor1", 2, 20, 20, 8, 50, 8, 10, 50, 10, 20, 30);
         player[1].SetAbility("Actor2", 5, 52, 120, 20, 50, 10, 17, 50, 10, 20, 30);
         player[2].SetAbility("Actor3", 3, 70, 70, 40, 50, 3, 10, 50, 10, 20, 30);
@@ -78,34 +150,20 @@ public class Base : MonoBehaviour
         bagWeapons["21"] = 1;
 
         player[0].WeaponList.Add("1");
+
+        player[0].SkillList.Add("1");
+        player[0].SkillList.Add("2");
+        player[0].SkillHistoryList.Add("3");
+        player[0].SkillHistoryList.Add("4");
+        player[0].SkillHistoryList.Add("5");
+        player[0].SkillHistoryList.Add("6");
+        player[0].SkillHistoryList.Add("7");
+        player[0].SkillHistoryList.Add("8");
     }
-    void Start()
-    {
-        DontDestroyOnLoad(this.gameObject);
-
-        playerVec = new Vector3(0,0,0);
-    }
-
-    void Update()
-    {
-
-    }
-
-    public static void SaveData()
-    {
-
-        
-    }
-
-    public static void LoadData()
-    {
-
-    }
-
     
     private void OnApplicationQuit()
     {
-        SaveData();
+        SaveGame(0);
     }
 
     private void DataLoader()

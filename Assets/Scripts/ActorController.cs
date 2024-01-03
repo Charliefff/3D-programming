@@ -50,6 +50,10 @@ public class ActorController : MonoBehaviour
     }
 
     public void Transmit(int portalPositionsID){
-        playerHandle.transform.position = portalPositions[portalPositionsID];
+        if(portalPositionsID == -1 ){
+            playerHandle.transform.position = Base.playerVec;
+        }else{
+            playerHandle.transform.position = portalPositions[portalPositionsID];
+        }
     }
 }

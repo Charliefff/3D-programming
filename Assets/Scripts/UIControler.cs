@@ -12,7 +12,7 @@ public class UIControler : MonoBehaviour
 
     }
     public void LoadTestScene(){
-        SceneManager.LoadScene("TestScene");
+        GameObject.Find("Loading").GetComponent<LoadingController>().SwitchScene("GrassLandScene");
     }
 
     
