@@ -9,6 +9,7 @@ public class EnemyController : MonoBehaviour
     public GameObject enemy;
     public Animator enemyAni;
     public int enemyID;
+    public bool wander = true;
 
 
     private float counter = 0f;
@@ -30,35 +31,38 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        counter += Time.deltaTime;
-        enemyParent.transform.position = enemy.transform.position; 
-        enemy.transform.position = enemyParent.transform.position; 
+        if(wander){
+             counter += Time.deltaTime;
+            enemyParent.transform.position = enemy.transform.position; 
+            enemy.transform.position = enemyParent.transform.position; 
 
-        if (!moveFlag && counter >= waitTime)
-        {
-            float turnAngle = Random.Range(-360, 360);
-            enemyParent.transform.Rotate(0, turnAngle, 0, Space.Self);
+            if (!moveFlag && counter >= waitTime)
+            {
+                float turnAngle = Random.Range(-360, 360);
+                enemyParent.transform.Rotate(0, turnAngle, 0, Space.Self);
 
-            moveDistance = Random.Range(0.5f, 4);
-            moveFlag = true;
-            enemyAni.SetBool("walk", true);
-            counter = 0f; 
-        }
-        
-        if (moveFlag)
-        {
-            if (counter <= moveDistance)
-            {
-                enemyParent.transform.Translate(Vector3.forward * Time.deltaTime);
+                moveDistance = Random.Range(0.5f, 4);
+                moveFlag = true;
+                enemyAni.SetBool("walk", true);
+                counter = 0f; 
             }
-            else
+            
+            if (moveFlag)
             {
-                moveFlag = false; 
-                waitTime = Random.Range(1f, 5f);
-                counter = 0f;
-                enemyAni.SetBool("walk", false);
+                if (counter <= moveDistance)
+                {
+                    enemyParent.transform.Translate(Vector3.forward * Time.deltaTime);
+                }
+                else
+                {
+                    moveFlag = false; 
+                    waitTime = Random.Range(1f, 5f);
+                    counter = 0f;
+                    enemyAni.SetBool("walk", false);
+                }
             }
         }
+       
     }
 
     void OnTriggerEnter(Collider otherObject)

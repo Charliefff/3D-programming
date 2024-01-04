@@ -19,7 +19,7 @@ public class DialogController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        dialogIndex = 0;
+        // dialogIndex = 0;
         selectOption = false;
         CloseOption();
         loadingController = GameObject.FindObjectOfType<LoadingController>();
@@ -28,6 +28,7 @@ public class DialogController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        print(dialogIndex);
         if (Input.anyKeyDown && !selectOption)
         {
             NextDialog();
@@ -35,13 +36,25 @@ public class DialogController : MonoBehaviour
     }    
 
     public void ShowDialog(){
+        DialogEffect();
+        
         if(dialogList[dialogIndex].type <= 1){
             UpdateText(dialogList[dialogIndex].name,dialogList[dialogIndex].content);
-            dialogIndex = dialogList[dialogIndex].next_id;
+            dialogIndex = dialogList[dialogIndex].next_id;            
         }
 
         if(dialogList[dialogIndex].type == 2){
             SetOption();
+        }
+    }
+
+    public void DialogEffect(){
+        if(dialogList[dialogIndex].effect == "consumable"){
+            if(Base.bagConsumable.ContainsKey(dialogList[dialogIndex].target)){
+                Base.bagConsumable[dialogList[dialogIndex].target] += 1;
+            }else{
+                Base.bagConsumable[dialogList[dialogIndex].target] = 1;
+            }
         }
     }
 
