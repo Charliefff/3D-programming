@@ -19,7 +19,7 @@ public class DialogController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        dialogIndex = 0;
+        // dialogIndex = 0;
         selectOption = false;
         CloseOption();
         loadingController = GameObject.FindObjectOfType<LoadingController>();

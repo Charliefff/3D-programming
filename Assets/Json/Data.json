@@ -1,6 +1,6 @@
 {
   "0": {
-    "day": "2024/01/04 15:28:54",
+    "day": "2024/01/04 17:02:11",
     "money": 10000,
     "bagConsumable": {
       "1": 3,
@@ -25,10 +25,10 @@
       "16": 1,
       "21": 1
     },
-    "playerPosX": -0.412400454,
-    "playerPosY": 0.0199998617,
-    "playerPosZ": 16.7442818,
-    "sceneName": "Modular Dungeon",
+    "playerPosX": 4.74421453,
+    "playerPosY": 7.244933,
+    "playerPosZ": 72.44953,
+    "sceneName": "GrassLandScene",
     "player": [
       {
         "name": "Actor1",

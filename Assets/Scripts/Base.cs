@@ -170,7 +170,6 @@ public class Base : MonoBehaviour
     {
         consumables = LoadJsonData<Consumable>(consumables_path);
         weapons = LoadJsonData<Weapon>(weapons_path);
-        //abilities = LoadJsonData<Ability>("Abilities.json");
         enemies = LoadJsonData<Enemy>(enemies_path);
         skills = LoadJsonData<Skill>(skills_path);
         states = LoadJsonData<State>(states_path);
