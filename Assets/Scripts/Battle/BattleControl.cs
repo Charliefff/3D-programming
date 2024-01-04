@@ -4,26 +4,24 @@ using System.Runtime.CompilerServices;
 using System.Xml.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Analytics;
 using UnityEngine.UIElements;
 using static UnityEngine.GraphicsBuffer;
 
 
 public class BattleControl : BattleBase
 {
-    
-    private CharacterStats characterStats;
-    private bool temp;
-    private new string name;
-    private Vector3 tempPos;
-    private Quaternion tempRot;
-    private Vector3 targetPos;
     private GameObject moveobj;
-    private GameObject oldobj;
-    private GameObject oldobj2;
+    private Animator Ani;
     private bool previousStateIsAttack = false;
-
+    private bool MonsterAttack = true;
+    public bool Playerattack;
+    public string skill;
+    
     private void Start()
     {
+        
+
         if (CurrentIndex == 0)
         {
             moveobj = ObjList[CurrentIndex];
@@ -40,22 +38,26 @@ public class BattleControl : BattleBase
             }
         }
     }
-    public void Update()
+    private void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return))
+
+        if (moveobj.name == "Monster")  
         {
-            moveobj = ObjList[CurrentIndex];
-            Movable();
-            GameObject moveChild = moveobj.transform.GetChild(0).gameObject;
-            if (moveChild.transform.Find("Portal green"))
+            Ani = moveobj.transform.GetChild(0).GetComponent<Animator>();
+            var stateInfo = Ani.GetCurrentAnimatorStateInfo(0);
+
+            if (stateInfo.IsName("Idle") && MonsterAttack)
             {
-                Transform portalGreen = moveChild.transform.Find("Portal green");
-                if (portalGreen != null)
-                {
-                    portalGreen.gameObject.SetActive(false);
-                }
+                Attack();
+                MonsterAttack = false;
             }
+        }
+        if (Playerattack)
+        {
+            Attack();
+            MonsterAttack = true;
+            Playerattack = false;
         }
 
         Updateportal();
@@ -63,10 +65,23 @@ public class BattleControl : BattleBase
     }
 
 
+    private void Attack() {
+        Movable();
+        GameObject moveChild = moveobj.transform.GetChild(0).gameObject;
+        if (moveChild.transform.Find("Portal green"))
+        {
+            Transform portalGreen = moveChild.transform.Find("Portal green");
+            if (portalGreen != null)
+            {
+                portalGreen.gameObject.SetActive(false);
+            }
+        }
+    }
+
     //控制腳色轉換
-    public void Updateportal()
+    private void Updateportal()
     {
-        Animator Ani = moveobj.transform.GetChild(0).GetComponent<Animator>();
+        Ani = moveobj.transform.GetChild(0).GetComponent<Animator>();
         var stateInfo = Ani.GetCurrentAnimatorStateInfo(0);
 
         // 檢查當前狀態是否為 idle 且前一狀態為 attack
@@ -77,8 +92,6 @@ public class BattleControl : BattleBase
             {
                 CurrentIndex = 0;
             }
-                
-            
             //判斷死亡
             if (ObjList[CurrentIndex].transform.GetChild(0).GetComponent<CharAbility>().HP <= 0)
             {
@@ -87,7 +100,6 @@ public class BattleControl : BattleBase
                 {
                     CurrentIndex = 0;
                 }
-                    
             }
             else
             {
@@ -114,7 +126,7 @@ public class BattleControl : BattleBase
         }
     }
 
-    public void Movable()
+    private void Movable()
     {
         GameObject ChildObj = moveobj.transform.GetChild(0).gameObject;
         if (moveobj.name == "Player1")
@@ -160,5 +172,16 @@ public class BattleControl : BattleBase
         }
             
     }   
+
+    public void CanMove()
+    {
+        Playerattack = true;
+    }
+    
+    public void SkillName(string name)
+    {
+        skill = name;
+        Debug.Log(skill);
+    }
 
 }

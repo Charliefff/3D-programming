@@ -40,6 +40,7 @@ public class BattleObj1 : BattleBase
         string tag = transform.parent.tag;
         if (tag == "Enemy" && PlayersList.Count > 0)
         {
+
             Target = PlayersList[1];
         }
         if (tag == "Player" && MonstersList.Count > 0)
@@ -47,7 +48,7 @@ public class BattleObj1 : BattleBase
             int randomIndex = Random.Range(0, MonstersList.Count);
             Target = MonstersList[randomIndex];
         }
-        if (transform.GetComponent<CharAbility>().HP == 0)
+        if (transform.GetComponent<CharAbility>().HP <= 0)
         {
             ani.SetFloat("HP", 0);
             Destroy(Target);
@@ -79,11 +80,13 @@ public class BattleObj1 : BattleBase
     private void Attack()
     {
         GameObject TargetChild;
-
+        int Def;
+        int Att;
         TargetChild = Target.transform.GetChild(0).gameObject;
-
-        TargetChild.GetComponent<CharAbility>().HP -= 50;
-        if (TargetChild.GetComponent<CharAbility>().HP == 0)
+        Def = TargetChild.GetComponent<CharAbility>().Defense;
+        Att = transform.GetComponent<CharAbility>().Attack;
+        TargetChild.GetComponent<CharAbility>().HP -= (Att / Def);
+        if (TargetChild.GetComponent<CharAbility>().HP <= 0)
         {
             Destroy(Target, 3f);
         }

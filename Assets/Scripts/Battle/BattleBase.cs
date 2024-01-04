@@ -4,15 +4,19 @@ using UnityEngine;
 using UnityEngine.Purchasing;
 using System.Linq;
 using static UnityEngine.GraphicsBuffer;
+using Unity.VisualScripting;
 
 public class BattleBase : MonoBehaviour
 {
+    //Base 資訊
+    protected int BaseEnemy_ID;
+    protected int BaseEnemy_Level;
+    protected string Base_seneriao;
+    //protected Dictionary Player1_Ability;
+
     //動畫
     public Animator ani;
-    protected enum CharacterStats
-    {
-        Idle = 0, Walk = 1, Attack = 2, Death = 3, Dance = 4
-    }
+
 
 
     //戰鬥控制
@@ -39,15 +43,23 @@ public class BattleBase : MonoBehaviour
     protected GameObject Player4 = null;
     protected GameObject Monster = null;
 
-    
-    
+    public bool PlayerAttack;
+
+
+
     //protected int HP = 100;
 
-  
+
 
     public void Awake()
     {
-        
+        //Base資訊
+        Base_seneriao = Base.sceneName;
+        BaseEnemy_ID = Base.enemyID;
+        Debug.Log(Base_seneriao);
+
+
+        Debug.Log(Base.enemyID);
         HP = GameObject.FindGameObjectsWithTag("HP");
         Monsters = GameObject.FindGameObjectsWithTag("Enemy");
         Players = GameObject.FindGameObjectsWithTag("Player");
@@ -83,6 +95,8 @@ public class BattleBase : MonoBehaviour
 
         playergameObj();
         SortBySpeed();
+
+
 
     }
 
@@ -123,6 +137,23 @@ public class BattleBase : MonoBehaviour
                          .ToList();
     }
 
+    protected void UpdatePlayerAttack(bool movable)
+    {
+        PlayerAttack = movable;
+    }
+
+    protected bool GetPlayerAttack()
+    {
+
+        Debug.Log(PlayerAttack);
+        return PlayerAttack;
+
+    }
+
+    protected enum CharacterStats
+    {
+        Idle = 0, Walk = 1, Attack = 2, Death = 3, Dance = 4
+    }
 
 
 }

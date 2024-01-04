@@ -7,13 +7,30 @@ using TMPro;
 
 public class BattleUI : BattleBase
 {
-
+    public GameObject List;
+    public GameObject Skill;
+    public GameObject Bag;
+    public GameObject Ability;
+    
     private float _lerpSpeed = 3;
 
     public void Update()
     {
         UpdateBloodUI();
         UpdateAbility();
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            CloseUI();
+        }
+    }
+
+    private void CloseUI()
+    {
+
+        Bag.SetActive(false);
+        Ability.SetActive(false);
+        //Skill.SetActive(false);
+
     }
 
 

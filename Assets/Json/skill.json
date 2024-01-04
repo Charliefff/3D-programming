@@ -9,6 +9,10 @@
     "ManaCost": "20",
     "Range": "單一目標",
     "Level": "初級",
+    "type": [1, 0, 0, 1],
+    "image": "",
+    "price": 50,
+    "particle": "",
     "Description": "釋放一道初級水之波動，對目標造成25點生命值傷害。"
   },
   "2": {
@@ -21,6 +25,10 @@
     "ManaCost": "25",
     "Range": "自我",
     "Level": "初級",
+    "type": [1, 0, 0, 1],
+    "image": "",
+    "price": 50,
+    "particle": "",
     "Description": "施加初級水之防護，提高防御力。"
   },
   "3": {
@@ -33,6 +41,10 @@
     "ManaCost": "30",
     "Range": "單一目標",
     "Level": "中級",
+    "type": [1, 0, 0, 1],
+    "image": "",
+    "price": 50,
+    "particle": "",
     "Description": "釋放一道中級水之湧動，對目標造成35點生命值傷害。"
   },
   "4": {
@@ -45,6 +57,10 @@
     "ManaCost": "40",
     "Range": "自我",
     "Level": "中級",
+    "type": [1, 0, 0, 1],
+    "image": "",
+    "price": 50,
+    "particle": "",
     "Description": "施加中級水之护盾，提高防御力。"
   },
   "5": {
@@ -57,6 +73,10 @@
     "ManaCost": "40",
     "Range": "單一目標",
     "Level": "高級",
+    "type": [1, 0, 0, 1],
+    "image": "",
+    "price": 50,
+    "particle": "",
     "Description": "釋放高級水之奔流，對目標造成45點生命值傷害。"
   },
   "6": {
@@ -69,6 +89,10 @@
     "ManaCost": "25",
     "Range": "單一目標",
     "Level": "初級",
+    "type": [1, 0, 0, 1],
+    "image": "",
+    "price": 50,
+    "particle": "",
     "Description": "射出一顆初級火焰，對目標造成30點生命值傷害。"
   },
   "7": {
@@ -81,6 +105,10 @@
     "ManaCost": "30",
     "Range": "單一目標",
     "Level": "初級",
+    "type": [1, 0, 0, 1],
+    "image": "",
+    "price": 50,
+    "particle": "",
     "Description": "釋放一個初級火之熱浪，對目標造成40點生命值傷害。"
   },
   "8": {
@@ -93,6 +121,10 @@
     "ManaCost": "35",
     "Range": "單一目標",
     "Level": "中級",
+    "type": [1, 0, 0, 1],
+    "image": "",
+    "price": 50,
+    "particle": "",
     "Description": "釋放一個中級火之烈焰，對目標造成45點生命值傷害。"
   },
   "9": {
@@ -105,6 +137,10 @@
     "ManaCost": "30",
     "Range": "自我",
     "Level": "中級",
+    "type": [1, 0, 0, 1],
+    "image": "",
+    "price": 50,
+    "particle": "",
     "Description": "施加中級火之保護，提高防御力。"
   },
   "10": {
@@ -117,6 +153,10 @@
     "ManaCost": "40",
     "Range": "單一目標",
     "Level": "高級",
+    "type": [1, 0, 0, 1],
+    "image": "",
+    "price": 50,
+    "particle": "",
     "Description": "釋放高級火之焰心，對目標造成50點生命值傷害。"
   },
   "11": {
@@ -129,6 +169,10 @@
     "ManaCost": "20",
     "Range": "單一目標",
     "Level": "初級",
+    "type": [1, 0, 0, 1],
+    "image": "",
+    "price": 50,
+    "particle": "",
     "Description": "釋放一股初級風之氣息，對目標造成25點生命值傷害。"
   },
   "12": {
@@ -141,6 +185,10 @@
     "ManaCost": "25",
     "Range": "自我",
     "Level": "初級",
+    "type": [1, 0, 0, 1],
+    "image": "",
+    "price": 50,
+    "particle": "",
     "Description": "施加初級風之護盾，提高防御力。"
   },
   "13": {
@@ -153,6 +201,10 @@
     "ManaCost": "30",
     "Range": "單一目標",
     "Level": "中級",
+    "type": [1, 0, 0, 1],
+    "image": "",
+    "price": 50,
+    "particle": "",
     "Description": "釋放一道中級風之旋渦，對目標造成35點生命值傷害。"
   },
   "14": {
@@ -165,6 +217,10 @@
     "ManaCost": "40",
     "Range": "自我",
     "Level": "中級",
+    "type": [1, 0, 0, 1],
+    "image": "",
+    "price": 50,
+    "particle": "",
     "Description": "施加中級風之守護，提高防御力。"
   },
   "15": {
@@ -177,6 +233,10 @@
     "ManaCost": "40",
     "Range": "單一目標",
     "Level": "高級",
+    "type": [1, 0, 0, 1],
+    "image": "",
+    "price": 50,
+    "particle": "",
     "Description": "釋放高級風之颶風，對目標造成45點生命值傷害。"
   },
   "16": {
@@ -189,6 +249,10 @@
     "ManaCost": "25",
     "Range": "單一目標",
     "Level": "初級",
+    "type": [1, 0, 0, 1],
+    "image": "",
+    "price": 50,
+    "particle": "",
     "Description": "釋放一道初級雷電攻擊，對目標造成30點生命值傷害。"
   },
   "17": {
@@ -201,6 +265,10 @@
     "ManaCost": "30",
     "Range": "自我",
     "Level": "初級",
+    "type": [1, 0, 0, 1],
+    "image": "",
+    "price": 50,
+    "particle": "",
     "Description": "施加初級雷之護盾，提高防御力。"
   },
   "18": {
@@ -213,6 +281,10 @@
     "ManaCost": "35",
     "Range": "單一目標",
     "Level": "中級",
+    "type": [1, 0, 0, 1],
+    "image": "",
+    "price": 50,
+    "particle": "",
     "Description": "釋放一道中級雷電風暴，對目標造成40點生命值傷害。"
   },
   "19": {
@@ -225,6 +297,10 @@
     "ManaCost": "35",
     "Range": "自我",
     "Level": "中級",
+    "type": [1, 0, 0, 1],
+    "image": "",
+    "price": 50,
+    "particle": "",
     "Description": "施加中級雷之守護，提高防御力。"
   },
   "20": {
@@ -237,6 +313,10 @@
     "ManaCost": "45",
     "Range": "單一目標",
     "Level": "高級",
+    "type": [1, 0, 0, 1],
+    "image": "",
+    "price": 50,
+    "particle": "",
     "Description": "釋放高級雷電風刃，對目標造成50點生命值傷害。"
   },
   "21": {
@@ -249,6 +329,10 @@
     "ManaCost": "25",
     "Range": "單一目標",
     "Level": "初級",
+    "type": [1, 0, 0, 1],
+    "image": "",
+    "price": 50,
+    "particle": "",
     "Description": "釋放一道初級聖光之擊，對目標造成30點生命值傷害。"
   },
   "22": {
@@ -261,6 +345,10 @@
     "ManaCost": "30",
     "Range": "自我",
     "Level": "初級",
+    "type": [1, 0, 0, 1],
+    "image": "",
+    "price": 50,
+    "particle": "",
     "Description": "施加初級光之庇護，提高防御力。"
   },
   "23": {
@@ -273,6 +361,10 @@
     "ManaCost": "35",
     "Range": "單一目標",
     "Level": "中級",
+    "type": [1, 0, 0, 1],
+    "image": "",
+    "price": 50,
+    "particle": "",
     "Description": "釋放一道中級聖光之翼，對目標造成40點生命值傷害。"
   },
   "24": {
@@ -285,6 +377,10 @@
     "ManaCost": "40",
     "Range": "自我",
     "Level": "中級",
+    "type": [1, 0, 0, 1],
+    "image": "",
+    "price": 50,
+    "particle": "",
     "Description": "施加中級光之祝福，提高防御力。"
   },
   "25": {
@@ -297,6 +393,10 @@
     "ManaCost": "45",
     "Range": "單一目標",
     "Level": "高級",
+    "type": [1, 0, 0, 1],
+    "image": "",
+    "price": 50,
+    "particle": "",
     "Description": "釋放高級聖光審判，對目標造成50點生命值傷害。"
   },
   "26": {
@@ -309,6 +409,10 @@
     "ManaCost": "45",
     "Range": "單一目標",
     "Level": "初級",
+    "type": [1, 0, 0, 1],
+    "image": "",
+    "price": 50,
+    "particle": "",
     "Description": "釋放初級黑暗侵蝕，對目標造成50點生命值傷害。"
   },
   "27": {
@@ -321,6 +425,10 @@
     "ManaCost": "30",
     "Range": "自我",
     "Level": "初級",
+    "type": [1, 0, 0, 1],
+    "image": "",
+    "price": 50,
+    "particle": "",
     "Description": "施加初級暗之束縛，降低目標防御力。"
   },
   "28": {
@@ -333,6 +441,10 @@
     "ManaCost": "50",
     "Range": "單一目標",
     "Level": "中級",
+    "type": [1, 0, 0, 1],
+    "image": "",
+    "price": 50,
+    "particle": "",
     "Description": "釋放中級黑暗吞噬，對目標造成60點生命值傷害。"
   },
   "29": {
@@ -345,6 +457,10 @@
     "ManaCost": "45",
     "Range": "自我",
     "Level": "中級",
+    "type": [1, 0, 0, 1],
+    "image": "",
+    "price": 50,
+    "particle": "",
     "Description": "施加中級暗之詛咒，降低目標防御力。"
   },
   "30": {
@@ -357,6 +473,10 @@
     "ManaCost": "60",
     "Range": "單一目標",
     "Level": "高級",
+    "type": [1, 0, 0, 1],
+    "image": "",
+    "price": 50,
+    "particle": "",
     "Description": "釋放高級黑暗終結，對目標造成70點生命值傷害。"
   },
   "31": {
@@ -369,6 +489,10 @@
     "ManaCost": "40",
     "Range": "自我",
     "Level": "初级",
+    "type": [1, 0, 0, 1],
+    "image": "",
+    "price": 50,
+    "particle": "",
     "Description": "施展初级生命之泉，每回合回复50点生命值，持续2回合。"
   },
   "32": {
@@ -381,6 +505,10 @@
     "ManaCost": "35",
     "Range": "自我",
     "Level": "初级",
+    "type": [1, 0, 0, 1],
+    "image": "",
+    "price": 50,
+    "particle": "",
     "Description": "施展初级魔力凝聚，每回合回复30点魔法值，持续2回合。"
   },
   "33": {
@@ -393,6 +521,10 @@
     "ManaCost": "45",
     "Range": "自我",
     "Level": "初级",
+    "type": [1, 0, 0, 1],
+    "image": "",
+    "price": 50,
+    "particle": "",
     "Description": "施展初级力量增強，提高自己的力量，持续3回合。"
   },
   "34": {
@@ -405,6 +537,10 @@
     "ManaCost": "45",
     "Range": "自我",
     "Level": "初级",
+    "type": [1, 0, 0, 1],
+    "image": "",
+    "price": 50,
+    "particle": "",
     "Description": "施展初级敏捷提升，提高自己的敏捷，持续3回合。"
   },
   "35": {
@@ -417,6 +553,10 @@
     "ManaCost": "45",
     "Range": "自我",
     "Level": "初级",
+    "type": [1, 0, 0, 1],
+    "image": "",
+    "price": 50,
+    "particle": "",
     "Description": "施展初级智力啟迪，提高自己的智力，持续3回合。"
   },
   "36": {
@@ -429,6 +569,10 @@
     "ManaCost": "40",
     "Range": "自我",
     "Level": "初级",
+    "type": [1, 0, 0, 1],
+    "image": "",
+    "price": 50,
+    "particle": "",
     "Description": "施展初级防禦強化，提高自己的防御力，持续3回合。"
   },
   "37": {
@@ -441,6 +585,10 @@
     "ManaCost": "70",
     "Range": "自我",
     "Level": "中級",
+    "type": [1, 0, 0, 1],
+    "image": "",
+    "price": 50,
+    "particle": "",
     "Description": "施展中級生命之源，每回合回复100点生命值，持续2回合。"
   },
   "38": {
@@ -453,6 +601,10 @@
     "ManaCost": "60",
     "Range": "自我",
     "Level": "中級",
+    "type": [1, 0, 0, 1],
+    "image": "",
+    "price": 50,
+    "particle": "",
     "Description": "施展中級魔力再生，每回合回复50点魔法值，持续2回合。"
   },
   "39": {
@@ -465,6 +617,10 @@
     "ManaCost": "70",
     "Range": "自我",
     "Level": "中級",
+    "type": [1, 0, 0, 1],
+    "image": "",
+    "price": 50,
+    "particle": "",
     "Description": "施展中級力量強化，提高自己的力量，持续3回合。"
   },
   "40": {
@@ -477,6 +633,10 @@
     "ManaCost": "70",
     "Range": "自我",
     "Level": "中級",
+    "type": [1, 0, 0, 1],
+    "image": "",
+    "price": 50,
+    "particle": "",
     "Description": "施展中級敏捷提升，提高自己的敏捷，持续3回合。"
   },
   "41": {
@@ -489,6 +649,10 @@
     "ManaCost": "70",
     "Range": "自我",
     "Level": "中級",
+    "type": [1, 0, 0, 1],
+    "image": "",
+    "price": 50,
+    "particle": "",
     "Description": "施展中級智力啟示，提高自己的智力，持续3回合。"
   },
   "42": {
@@ -501,6 +665,10 @@
     "ManaCost": "75",
     "Range": "自我",
     "Level": "中級",
+    "type": [1, 0, 0, 1],
+    "image": "",
+    "price": 50,
+    "particle": "",
     "Description": "施展中級盾牆防護，提高自己的防御力，持续3回合。"
   },
   "43": {
@@ -513,6 +681,10 @@
     "ManaCost": "100",
     "Range": "自我",
     "Level": "高級",
+    "type": [1, 0, 0, 1],
+    "image": "",
+    "price": 50,
+    "particle": "",
     "Description": "施展高級生命之源，每回合回复150点生命值，持续2回合。"
   },
   "44": {
@@ -525,6 +697,10 @@
     "ManaCost": "90",
     "Range": "自我",
     "Level": "高級",
+    "type": [1, 0, 0, 1],
+    "image": "",
+    "price": 50,
+    "particle": "",
     "Description": "施展高級魔力再生，每回合回复100点魔法值，持续2回合。"
   },
   "45": {
@@ -537,6 +713,10 @@
     "ManaCost": "120",
     "Range": "自我",
     "Level": "高級",
+    "type": [1, 0, 0, 1],
+    "image": "",
+    "price": 50,
+    "particle": "",
     "Description": "施展高級絕對之力，提高自己的力量至极限，持续4回合。"
   }
 }
