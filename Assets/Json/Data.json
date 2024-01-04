@@ -1,6 +1,6 @@
 {
   "0": {
-    "day": "2024/01/02 17:09:51",
+    "day": "2024/01/04 15:28:54",
     "money": 10000,
     "bagConsumable": {
       "1": 3,
@@ -25,9 +25,9 @@
       "16": 1,
       "21": 1
     },
-    "playerPosX": -0.366097242,
-    "playerPosY": 0.02000022,
-    "playerPosZ": 9.354625,
+    "playerPosX": -0.412400454,
+    "playerPosY": 0.0199998617,
+    "playerPosZ": 16.7442818,
     "sceneName": "Modular Dungeon",
     "player": [
       {
