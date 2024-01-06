@@ -37,8 +37,10 @@ public class UIControler : MonoBehaviour
         GameObject.Find("Loading").GetComponent<LoadingController>().SwitchScene(scene,mouselock);
     }
 
-    public void BaseAreaSlectButton(int imgID){       
-        StartCoroutine(SwitchBaseArea(imgID));
+    public void BaseAreaSlectButton(int imgID){ 
+        if(imgID >= 0){
+            StartCoroutine(SwitchBaseArea(imgID));
+        }        
     }
 
     IEnumerator SwitchBaseArea(int imgID)
@@ -56,5 +58,10 @@ public class UIControler : MonoBehaviour
         buttonListBaseArea[imgID].SetActive(true);       
 
         GameObject.Find("Loading").GetComponent<LoadingController>().LoadingFadeOut();
+    }
+    public void QuitGame()
+    {
+        Application.Quit();
+        Debug.Log("Game is exiting"); // 在Unity編輯器中輸出日誌，因為Application.Quit不會在編輯器中運作
     }
 }

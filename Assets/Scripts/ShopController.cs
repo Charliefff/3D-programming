@@ -25,6 +25,8 @@ public class ShopController : MonoBehaviour
     public GameObject detailPage;
     public GameObject alertPage;
     public TextMeshProUGUI moneyCount; 
+    public GameObject shop;
+
 
 
 
@@ -327,5 +329,9 @@ public class ShopController : MonoBehaviour
             selectButton.transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = "購買";
         }
         itemText.text = detail;
+    }
+
+    public void LeaveShop(){
+        shop.SetActive(false);
     }
 }

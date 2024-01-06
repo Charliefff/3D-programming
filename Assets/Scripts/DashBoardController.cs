@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
+using TMPro; 
+using UnityEngine.UI;
 
 public class DashBoardController : MonoBehaviour
 {
@@ -15,6 +17,9 @@ public class DashBoardController : MonoBehaviour
     private DashBoardLoadController dashBoardLoadController;
     public static bool dashBoardEnable = true;
     public GameObject[] DashBoardPage = new GameObject[7];
+
+    public TextMeshProUGUI moneyDashBoard;
+
     private int Dashboard_index;
     private EventSystem eventSystem;
 
@@ -72,6 +77,8 @@ public class DashBoardController : MonoBehaviour
         dashBoardNormalController.UpdateNormal();
         dashBoardItemController.UpdateItem();
         dashBoardEquipmentController.UpdateEquipment();  
+
+        moneyDashBoard.text = "" + Base.money + " G";
     }
 
     public void Dashboard_state(){

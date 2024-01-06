@@ -47,7 +47,12 @@ public class DashBoardLoadController : MonoBehaviour
 
     private void DetermineWindowClick(int index){
         determineWindow.SetActive(false);
-        GameObject.FindObjectOfType<DashBoardController>().DashBoard_switch();
+
+        DashBoardController dashboardController = GameObject.FindObjectOfType<DashBoardController>();
+        if (dashboardController != null)
+        {
+            dashboardController.DashBoard_switch();
+        }
 
         Base.LoadGame(index);
     }
