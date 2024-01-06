@@ -1,26 +1,35 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Purchasing;
 using System.Linq;
 using static UnityEngine.GraphicsBuffer;
 using Unity.VisualScripting;
+using UnityEditor.PackageManager;
 
 public class BattleBase : MonoBehaviour
 {
-    //Base ��T
-    protected int BaseEnemy_ID;
+    //Base 資訊
+    protected int BaseEnemy_ID = 1;
     protected int BaseEnemy_Level;
     protected string Base_seneriao;
+    protected int Base_Ability;
+    protected List<int> Player1_ability;
+    protected List<int> Player2_ability;
+    protected List<int> Player3_ability;
+    protected List<int> Player4_ability;
+    protected List<string> Player1_skill;
+    protected List<string> Player2_skill;
+    protected List<string> Player3_skill;
+    protected List<string> Player4_skill;
     //protected Dictionary Player1_Ability;
 
-    //�ʵe
+    //動畫
     public Animator ani;
 
 
 
-    //�԰�����
-
+    //戰鬥控制
     protected bool AnimationEnd = false;
     private GameObject[] Monsters;
     private GameObject[] Players;
@@ -28,7 +37,6 @@ public class BattleBase : MonoBehaviour
     private GameObject[] AbilityUI;
 
     protected static string StateObj;
-    protected static int CurrentIndex;
     protected List<GameObject> HPList;
     protected List<GameObject> MonstersList;
     protected List<GameObject> PlayersList;
@@ -36,34 +44,117 @@ public class BattleBase : MonoBehaviour
     protected List<GameObject> AbilityUIList;
     protected List<int> SpeedList = new List<int> { 4, 0, 2, 3, 1 };
 
-    //��X�|������
+    //抓出四隻角色
     protected GameObject Player1 = null;
     protected GameObject Player2 = null;
     protected GameObject Player3 = null;
     protected GameObject Player4 = null;
     protected GameObject Monster = null;
 
+
+
     public bool PlayerAttack;
 
-
-
-    //protected int HP = 100;
+    //音效
+    protected GameObject Battle_music;
+    protected GameObject Victory_music;
+    protected GameObject Gameover_music;
 
 
 
     public void Awake()
     {
-        //Base��T
+
+        GetBaseInfo();
+        SetMusic();
+        SetMonster();
+        SetMonster();
+        SetPlayer();
+        playergameObj();
+        SortBySpeed();
+
+
+    }
+
+    private void SetMusic()
+    {
+        GameObject Music_parent = GameObject.Find("Music");
+
+        if (Music_parent != null)
+        {
+
+            Battle_music = Music_parent.transform.Find("BattleMusic_music").gameObject;
+            Victory_music = Music_parent.transform.Find("Victory_music").gameObject;
+            Gameover_music = Music_parent.transform.Find("GameOver_music").gameObject;
+
+        }
+
+        Battle_music.SetActive(true);
+    }
+
+
+
+    protected void UpdatePlayerAttack(bool movable)
+    {
+        PlayerAttack = movable;
+    }
+
+    protected bool GetPlayerAttack()
+    {
+
+        Debug.Log(PlayerAttack);
+        return PlayerAttack;
+
+    }
+
+    protected enum CharacterStats
+    {
+        Idle = 0, Walk = 1, Attack = 2, Death = 3, Dance = 4
+    }
+
+    private void GetBaseInfo()
+    {
+        //Base資訊
         Base_seneriao = Base.sceneName;
-        BaseEnemy_ID = Base.enemyID;
-        Debug.Log(Base_seneriao);
+        //BaseEnemy_ID = Base.enemyID;
+
+    }
+
+    private void SetMonster()
+    {
+        string BaseEnemy_Name = "Enemy0" + BaseEnemy_ID;
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in enemies)
+        {
+
+            Transform enemyTransform = enemy.transform;
+
+            // 遍歷敵人遊戲物件的所有子物件
+            for (int i = 0; i < enemyTransform.childCount; i++)
+            {
+                // 獲取子物件的名稱
+                string childObjectName = enemyTransform.GetChild(i).name;
+                GameObject child_enemy = enemyTransform.GetChild(i).gameObject;
+
+                if (childObjectName != BaseEnemy_Name)
+                {
+                    child_enemy.SetActive(false);
+                }
+            }
+            
+        }
+
+        Monsters = enemies;
 
 
-        Debug.Log(Base.enemyID);
+    }
+
+    private void SetPlayer()
+    {
         HP = GameObject.FindGameObjectsWithTag("HP");
-        Monsters = GameObject.FindGameObjectsWithTag("Enemy");
         Players = GameObject.FindGameObjectsWithTag("Player");
         AbilityUI = GameObject.FindGameObjectsWithTag("Ability");
+
 
         HPList = new List<GameObject>();
         ObjList = new List<GameObject>();
@@ -77,12 +168,12 @@ public class BattleBase : MonoBehaviour
         {
             HPList.Add(HP[i]);
         }
-        foreach (var o in Monsters)
-        {
-            ObjList.Add(o);
-            MonstersList.Add(o);
-        }
 
+        for (int i = 0; i < Monsters.Length; i++)
+        {
+            ObjList.Add(Monsters[i]);
+            MonstersList.Add(Monsters[i]);
+        }
         foreach (var o in Players)
         {
             ObjList.Add(o);
@@ -92,16 +183,11 @@ public class BattleBase : MonoBehaviour
         {
             AbilityUIList.Add(o);
         }
-
-        playergameObj();
-        SortBySpeed();
-
-
-
     }
 
     private void playergameObj()
     {
+        string BaseEnemy_Name = "Enemy0" + BaseEnemy_ID;
         for (int i = 0; i < ObjList.Count; i++)
         {
             if (ObjList[i].name == "Player1")
@@ -122,38 +208,18 @@ public class BattleBase : MonoBehaviour
             }
             else
             {
-                Monster = ObjList[i].transform.GetChild(0).gameObject;
+                Monster = ObjList[i].transform.Find(BaseEnemy_Name).gameObject;
             }
         }
     }
 
-    //�ھڳt��sort
+    //根據速度sort
     private void SortBySpeed()
     {
-        
+
         ObjList = ObjList.Select((obj, index) => new { obj, speed = SpeedList[index] })
                          .OrderByDescending(x => x.speed)
                          .Select(x => x.obj)
                          .ToList();
     }
-
-    protected void UpdatePlayerAttack(bool movable)
-    {
-        PlayerAttack = movable;
-    }
-
-    protected bool GetPlayerAttack()
-    {
-
-        Debug.Log(PlayerAttack);
-        return PlayerAttack;
-
-    }
-
-    protected enum CharacterStats
-    {
-        Idle = 0, Walk = 1, Attack = 2, Death = 3, Dance = 4
-    }
-
-
 }

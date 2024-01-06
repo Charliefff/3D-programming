@@ -10,8 +10,12 @@ public class BattleObj2 : BattleBase
     public bool canMove = false;
     private GameObject Target;
     private string aniName;
+    private int oldHP;
 
-
+    public void Start()
+    {
+        oldHP = transform.GetComponent<CharAbility>().HP;
+    }
     public void Update()
     {
         aniName = transform.parent.name;
@@ -28,11 +32,10 @@ public class BattleObj2 : BattleBase
 
 
         }
-        if (transform.GetComponent<CharAbility>().HP == 0)
-        {
-            ani.SetFloat("HP", 0);
 
-        }
+        CheckState();
+
+
     }
 
     private void ChooseTarget()
@@ -85,9 +88,25 @@ public class BattleObj2 : BattleBase
         Def = TargetChild.GetComponent<CharAbility>().Defense;
         Att = transform.GetComponent<CharAbility>().Attack;
         TargetChild.GetComponent<CharAbility>().HP -= (Att / Def);
-        if (TargetChild.GetComponent<CharAbility>().HP <= 0)
+    }
+
+    private void CheckState()
+    {
+        if (transform.GetComponent<CharAbility>().HP <= 0)
         {
-            Destroy(Target, 3f);
+            ani.SetFloat("HP", 0);
+
+        }
+
+        if (oldHP != transform.GetComponent<CharAbility>().HP && transform.GetComponent<CharAbility>().HP > 0)
+        {
+            ani.SetBool("Pain", true);
+            oldHP = transform.GetComponent<CharAbility>().HP;
+        }
+        else
+        {
+            ani.SetBool("Pain", false);
+
         }
     }
 

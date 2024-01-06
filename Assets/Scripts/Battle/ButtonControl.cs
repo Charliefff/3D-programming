@@ -63,4 +63,15 @@ public class ButtonControl : BattleUI
        
 
     }
+
+    public void BacktoMainScene()
+    {
+        GameObject.Find("Loading").GetComponent<LoadingController>().SwitchScene("GrassLandScene",true,true);
+    }
+
+    public void GameOver()
+    {
+        GameObject.Find("Loading").GetComponent<LoadingController>().SwitchScene("TitleScene");
+
+    }
 }

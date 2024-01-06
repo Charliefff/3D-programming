@@ -13,6 +13,18 @@ public class BattleObjMonster : BattleBase
     private GameObject Target;
     private bool end = true;
 
+    public GameObject Victory;
+    public GameObject End;
+
+    private List<int> chosenIndices = new List<int>();
+    private bool hasChosenAll = false;
+    private int oldHP;
+
+
+    public void Start()
+    {
+        oldHP = transform.GetComponent<CharAbility>().HP;
+    }
 
     public void Update()
     {
@@ -27,37 +39,55 @@ public class BattleObjMonster : BattleBase
         {
             ani.SetBool("Attack", false);
         }
-        if (gameObject.GetComponent<CharAbility>().HP <= 0 && end)
-        {
-            ani.SetFloat("HP", 0);
-            EndBattle();
-        }
+
+        CheckState();
     }
+
+ 
 
     private void ChooseTarget()
     {
-
         string tag = transform.parent.tag;
         if (tag == "Enemy" && PlayersList.Count > 0)
         {
-            int randomIndex = Random.Range(0, PlayersList.Count);
-
- 
+            CheckHP();
+            int randomIndex = GetRandomIndex();
             Target = PlayersList[randomIndex];
-            while (Target == null)
-            {
-                Target = PlayersList[randomIndex];
 
+            if (chosenIndices.Count >= PlayersList.Count)
+            {
+                hasChosenAll = true;
+                StartCoroutine(EndBattleAfterDelay(3f));
             }
-        }
-        if (tag == "Player" && MonstersList.Count > 0)
-        {
-            int randomIndex = Random.Range(0, MonstersList.Count);
-            Target = MonstersList[randomIndex];
         }
     }
 
+    private void CheckHP()
+    {
+        GameObject temptarget;
+        for (int i = 0; i < PlayersList.Count; i++)
+        {
+            temptarget = PlayersList[i];
+            if (temptarget.transform.GetChild(0).gameObject.GetComponent<CharAbility>().HP <= 0)
+            {
+                chosenIndices.Add(i);
+            }
+        }
+        Debug.Log(chosenIndices.Count);
+    }
     
+    private int GetRandomIndex()
+    {
+        int randomIndex = Random.Range(0, PlayersList.Count);
+        while (chosenIndices.Contains(randomIndex))
+        {
+            randomIndex = Random.Range(0, PlayersList.Count);
+        }
+        return randomIndex;
+    }
+
+
+
     public void MoveTo()
     {
         
@@ -76,9 +106,8 @@ public class BattleObjMonster : BattleBase
 
         ani.SetBool("Attack", true);
 
+
         Attack();
-
-
         canMove = false;
     }
 
@@ -91,17 +120,63 @@ public class BattleObjMonster : BattleBase
         Def = TargetChild.GetComponent<CharAbility>().Defense;
         Att = transform.GetComponent<CharAbility>().Attack;
         TargetChild.GetComponent<CharAbility>().HP -= (Att / Def);
-        if (TargetChild.GetComponent<CharAbility>().HP <= 0)
+        //if (TargetChild.GetComponent<CharAbility>().HP <= 0)
+        //{
+        //    Destroy(Target, 3f);
+        //}
+    }
+    private IEnumerator EndBattleAfterDelay(float delay)
+    {
+        end = false;
+        yield return new WaitForSeconds(delay);
+        if (hasChosenAll)
         {
-            Destroy(Target, 3f);
+            GameOver();
+        }
+        else
+        {
+            EndBattle(); // ¤T¬í«á°õ¦æ EndBattle
         }
     }
 
     private void EndBattle()
     {
-        end = false;
-        //Debug.Log("Battle End");
-        GameObject.Find("Loading").GetComponent<LoadingController>().SwitchScene("GrassLandScene",true,true);
+
+        Victory.SetActive(true);
+        Battle_music.SetActive(false);
+        Victory_music.SetActive(true);
+    }
+
+    private void GameOver()
+    {
+        End.SetActive(true);
+        Battle_music.SetActive(false);
+        Gameover_music.SetActive(true);
+    }
+
+    private void CheckState()
+    {
+        if (transform.GetComponent<CharAbility>().HP <= 0)
+        {
+            ani.SetFloat("HP", 0);
+
+        }
+
+        if (oldHP != transform.GetComponent<CharAbility>().HP && transform.GetComponent<CharAbility>().HP > 0)
+        {
+            ani.SetBool("Pain", true);
+            oldHP = transform.GetComponent<CharAbility>().HP;
+        }
+        else
+        {
+            ani.SetBool("Pain", false);
+
+        }
+
+        if (hasChosenAll)
+        {
+            ani.SetBool("Victory", true);
+        }
     }
 }
 

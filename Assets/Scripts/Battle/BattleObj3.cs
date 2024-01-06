@@ -10,8 +10,12 @@ public class BattleObj3 : BattleBase
     public bool canMove = false;
     private GameObject Target;
     private string aniName;
+    private int oldHP;
 
-
+    public void Start()
+    {
+        oldHP = transform.GetComponent<CharAbility>().HP;
+    }
     public void Update()
     {
         aniName = transform.parent.name;
@@ -23,14 +27,15 @@ public class BattleObj3 : BattleBase
         }
         if (!animation.IsName("Idle"))
         {
-         
             ani.SetBool("Attack", false);
-        }
-        if (transform.GetComponent<CharAbility>().HP == 0)
-        {
-            ani.SetFloat("HP", 0);
+            AnimationEnd = true;
+
 
         }
+
+        CheckState();
+
+
     }
 
     private void ChooseTarget()
@@ -56,7 +61,6 @@ public class BattleObj3 : BattleBase
     {
 
         string tag = transform.parent.tag;
-        Debug.Log(tag);
         ChooseTarget();
         if (Target == null)
         {
@@ -68,14 +72,13 @@ public class BattleObj3 : BattleBase
             GameObject targetSubObj = Target.transform.GetChild(0).gameObject;
         }
 
-        //§ðÀ»¸}¦â¯S®Ä
 
         ani.SetBool("Attack", true);
-
         Attack();
         canMove = false;
 
     }
+
     private void Attack()
     {
         GameObject TargetChild;
@@ -85,9 +88,25 @@ public class BattleObj3 : BattleBase
         Def = TargetChild.GetComponent<CharAbility>().Defense;
         Att = transform.GetComponent<CharAbility>().Attack;
         TargetChild.GetComponent<CharAbility>().HP -= (Att / Def);
-        if (TargetChild.GetComponent<CharAbility>().HP <= 0)
+    }
+
+    private void CheckState()
+    {
+        if (transform.GetComponent<CharAbility>().HP <= 0)
         {
-            Destroy(Target, 3f);
+            ani.SetFloat("HP", 0);
+
+        }
+
+        if (oldHP != transform.GetComponent<CharAbility>().HP && transform.GetComponent<CharAbility>().HP > 0)
+        {
+            ani.SetBool("Pain", true);
+            oldHP = transform.GetComponent<CharAbility>().HP;
+        }
+        else
+        {
+            ani.SetBool("Pain", false);
+
         }
     }
 

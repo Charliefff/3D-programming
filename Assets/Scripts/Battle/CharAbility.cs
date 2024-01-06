@@ -19,7 +19,7 @@ public class CharAbility : MonoBehaviour
     public static Ability[] player = new Ability[4];
     void Awake()
     {
-        Debug.Log(Base.player[0].SkillList);
+        //Debug.Log(Base.player[0].SkillList);
         HP = MaxHP;
     }
 

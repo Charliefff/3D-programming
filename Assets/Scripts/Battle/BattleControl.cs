@@ -11,40 +11,46 @@ using static UnityEngine.GraphicsBuffer;
 
 public class BattleControl : BattleBase
 {
+    public string skill;
+    public bool Playerattack;
+
     private GameObject moveobj;
     private Animator Ani;
     private bool previousStateIsAttack = false;
     private bool MonsterAttack = true;
-    public bool Playerattack;
-    public string skill;
-    
+    private string movable_name;
+
+    protected int CurrentIndex = 0;
+
+
+
     private void Start()
     {
-        
+        //Debug.Log(Monster.name);
+        GameObject moveChild;
 
         if (CurrentIndex == 0)
         {
             moveobj = ObjList[CurrentIndex];
-            GameObject moveChild = moveobj.transform.GetChild(0).gameObject;
-            if (moveChild.transform.Find("Portal green"))
+            Movable_name();
+            moveChild = moveobj.transform.Find(movable_name).gameObject;
+
+            Transform portalGreen = moveChild.transform.Find("Portal green");
+            if (portalGreen != null)
             {
 
-                Transform portalGreen = moveChild.transform.Find("Portal green");
-                if (portalGreen != null)
-                {
-                    portalGreen.gameObject.SetActive(true);
-                }
-
+                portalGreen.gameObject.SetActive(true);
             }
         }
     }
+
     private void Update()
     {
-
-
         if (moveobj.name == "Monster")  
         {
-            Ani = moveobj.transform.GetChild(0).GetComponent<Animator>();
+            Movable_name();
+
+            Ani = moveobj.transform.Find(movable_name).GetComponent<Animator>();
             var stateInfo = Ani.GetCurrentAnimatorStateInfo(0);
 
             if (stateInfo.IsName("Idle") && MonsterAttack)
@@ -55,6 +61,8 @@ public class BattleControl : BattleBase
         }
         if (Playerattack)
         {
+            Movable_name();
+
             Attack();
             MonsterAttack = true;
             Playerattack = false;
@@ -67,7 +75,8 @@ public class BattleControl : BattleBase
 
     private void Attack() {
         Movable();
-        GameObject moveChild = moveobj.transform.GetChild(0).gameObject;
+        
+        GameObject moveChild = moveobj.transform.Find(movable_name).gameObject;
         if (moveChild.transform.Find("Portal green"))
         {
             Transform portalGreen = moveChild.transform.Find("Portal green");
@@ -81,7 +90,9 @@ public class BattleControl : BattleBase
     //控制腳色轉換
     private void Updateportal()
     {
-        Ani = moveobj.transform.GetChild(0).GetComponent<Animator>();
+        int checkgameover = 0;
+        //Debug.Log(movable_name);
+        Ani = moveobj.transform.Find(movable_name).GetComponent<Animator>();
         var stateInfo = Ani.GetCurrentAnimatorStateInfo(0);
 
         // 檢查當前狀態是否為 idle 且前一狀態為 attack
@@ -92,33 +103,40 @@ public class BattleControl : BattleBase
             {
                 CurrentIndex = 0;
             }
-            //判斷死亡
-            if (ObjList[CurrentIndex].transform.GetChild(0).GetComponent<CharAbility>().HP <= 0)
+
+            moveobj = ObjList[CurrentIndex];
+            Movable_name();
+            while (moveobj.transform.Find(movable_name).GetComponent<CharAbility>().HP <= 0)
             {
                 CurrentIndex += 1;
                 if (CurrentIndex >= ObjList.Count)
                 {
                     CurrentIndex = 0;
                 }
-            }
-            else
-            {
                 moveobj = ObjList[CurrentIndex];
-                StateObj = moveobj.name;
-
-                GameObject moveChild = moveobj.transform.GetChild(0).gameObject;
-                if (moveChild.transform.Find("Portal green"))
+                Movable_name();
+                checkgameover++;
+                if (checkgameover > 4)
                 {
-                    Transform portalGreen = moveChild.transform.Find("Portal green");
-
-                    if (portalGreen != null)
-                    {
-                        portalGreen.gameObject.SetActive(true);
-                    }
+                    break;
                 }
-                previousStateIsAttack = false;
+
             }
-                
+            StateObj = moveobj.name;
+
+            GameObject moveChild = moveobj.transform.Find(movable_name).gameObject;
+            if (moveChild.transform.Find("Portal green"))
+            {
+                Transform portalGreen = moveChild.transform.Find("Portal green");
+
+                if (portalGreen != null)
+                {
+                    portalGreen.gameObject.SetActive(true);
+                }
+
+            }
+            previousStateIsAttack = false;
+
         }
         else if (stateInfo.IsName("Attack"))
         {
@@ -128,7 +146,7 @@ public class BattleControl : BattleBase
 
     private void Movable()
     {
-        GameObject ChildObj = moveobj.transform.GetChild(0).gameObject;
+        GameObject ChildObj = moveobj.transform.Find(movable_name).gameObject;
         if (moveobj.name == "Player1")
         {
             BattleObj1 script = ChildObj.GetComponent<BattleObj1>();
@@ -170,7 +188,6 @@ public class BattleControl : BattleBase
                 script.canMove = true;
             }
         }
-            
     }   
 
     public void CanMove()
@@ -184,4 +201,15 @@ public class BattleControl : BattleBase
         Debug.Log(skill);
     }
 
+    private void Movable_name()
+    {
+        if (moveobj.name == "Monster")
+        {
+            movable_name = Monster.name;
+        }
+        else
+        {
+            movable_name = moveobj.transform.GetChild(0).gameObject.name;
+        }
+    }
 }
