@@ -159,6 +159,8 @@ public class BattleObjMonster : BattleBase
         if (transform.GetComponent<CharAbility>().HP <= 0)
         {
             ani.SetFloat("HP", 0);
+            StartCoroutine(EndBattleAfterDelay(3f));
+
 
         }
 
