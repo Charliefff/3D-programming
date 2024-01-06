@@ -36,25 +36,25 @@ public class DialogController : MonoBehaviour
     }    
 
     public void ShowDialog(){
-        DialogEffect();
+        DialogEffect(dialogIndex);
         
         if(dialogList[dialogIndex].type <= 1){
             UpdateText(dialogList[dialogIndex].name,dialogList[dialogIndex].content);
-            dialogIndex = dialogList[dialogIndex].next_id;            
-        }
-
-        if(dialogList[dialogIndex].type == 2){
+            dialogIndex = dialogList[dialogIndex].next_id;
+        }else if(dialogList[dialogIndex].type == 2){
             SetOption();
         }
     }
 
-    public void DialogEffect(){
-        if(dialogList[dialogIndex].effect == "consumable"){
-            if(Base.bagConsumable.ContainsKey(dialogList[dialogIndex].target)){
-                Base.bagConsumable[dialogList[dialogIndex].target] += 1;
+    public void DialogEffect(int dID){
+        if(dialogList[dID].effect == "consumable"){
+            if(Base.bagConsumable.ContainsKey(dialogList[dID].target)){
+                Base.bagConsumable[dialogList[dID].target] += 1;
             }else{
-                Base.bagConsumable[dialogList[dialogIndex].target] = 1;
+                Base.bagConsumable[dialogList[dID].target] = 1;
             }
+        }else if(dialogList[dID].effect == "protalPoint"){
+            GameObject.Find("Loading").GetComponent<LoadingController>().SwitchScene(dialogList[dID].target,false);
         }
     }
 
@@ -98,6 +98,7 @@ public class DialogController : MonoBehaviour
         if(dialogList[optionList[0]].effect == "portal"){            
             StartCoroutine(TransmitActor(optionList[0]));
         }else{
+            DialogEffect(optionList[0]);
             dialogIndex = dialogList[optionList[0]].next_id;
             SelectOption();   
         }
@@ -107,6 +108,7 @@ public class DialogController : MonoBehaviour
         if(dialogList[optionList[1]].effect == "portal"){            
             StartCoroutine(TransmitActor(optionList[1]));
         }else{
+            DialogEffect(optionList[1]);
             dialogIndex = dialogList[optionList[1]].next_id;
             SelectOption();   
         }
@@ -116,6 +118,7 @@ public class DialogController : MonoBehaviour
         if(dialogList[optionList[2]].effect == "portal"){            
             StartCoroutine(TransmitActor(optionList[2]));
         }else{
+            DialogEffect(optionList[2]);
             dialogIndex = dialogList[optionList[2]].next_id;
             SelectOption();   
         }    

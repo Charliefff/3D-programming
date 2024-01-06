@@ -17,4 +17,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BattleDemo.unity
     guid: 44890247e5055364c9a4e65d03d06785
+  - enabled: 1
+    path: Assets/Scenes/DesertScene.unity
+    guid: e6256d56e5fcf994fb55e41338041216
+  - enabled: 1
+    path: Assets/Scenes/DungeonScene.unity
+    guid: 2596b254d3266f14a92430eba30004f9
+  - enabled: 1
+    path: Assets/Scenes/BaseArea.unity
+    guid: 4e785f01032dc3e449528eee842ecdce
   m_configObjects: {}

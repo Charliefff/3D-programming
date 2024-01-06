@@ -18,6 +18,8 @@ public class EnemyController : MonoBehaviour
     private bool moveFlag;
     private LoadingController loadingController;
 
+    private float timeSwitch;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +28,8 @@ public class EnemyController : MonoBehaviour
         waitTime = Random.Range(1f, 5f);
         counter = 0f; 
         moveFlag = false;
+
+        timeSwitch = Time.time;
     }
 
     // Update is called once per frame
@@ -66,14 +70,18 @@ public class EnemyController : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider otherObject)
-    {
+    {    
         if(otherObject.name == "PlayerHandle")
         {
-            Base.sceneName = SceneManager.GetActiveScene().name;
-            Base.enemyID = enemyID;
-            Base.playerVec = GameObject.Find("PlayerHandle").GetComponent<Transform>().position;
-            
-            loadingController.SwitchScene("BattleDemo", false);
+            if(Time.time - timeSwitch < 0.5){
+                Destroy(this.gameObject);
+            }else{
+                Base.sceneName = SceneManager.GetActiveScene().name;
+                Base.enemyID = enemyID;
+                Base.playerVec = GameObject.Find("PlayerHandle").GetComponent<Transform>().position;
+                
+                loadingController.SwitchScene("BattleDemo", false);
+            }            
         }
     }
 }
