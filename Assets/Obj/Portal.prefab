@@ -172,6 +172,7 @@ MonoBehaviour:
     effect: 
     target: 
   communication: {fileID: 0}
+  onetime: 0
 --- !u!1001 &5008656585238737876
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -124,6 +124,7 @@ MonoBehaviour:
   enemyAni: {fileID: 982779664052910440}
   enemyID: 1
   wander: 1
+  battleScene: Battle1
 --- !u!1001 &932433119043288374
 PrefabInstance:
   m_ObjectHideFlags: 0

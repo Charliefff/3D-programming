@@ -53,6 +53,12 @@ public class DialogController : MonoBehaviour
             }else{
                 Base.bagConsumable[dialogList[dID].target] = 1;
             }
+        }else if(dialogList[dID].effect == "weapon"){
+            if(Base.bagWeapons.ContainsKey(dialogList[dID].target)){
+                Base.bagWeapons[dialogList[dID].target] += 1;
+            }else{
+                Base.bagWeapons[dialogList[dID].target] = 1;
+            }
         }else if(dialogList[dID].effect == "protalPoint"){
             GameObject.Find("Loading").GetComponent<LoadingController>().SwitchScene(dialogList[dID].target,false);
         }

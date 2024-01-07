@@ -45,6 +45,9 @@ public class Base : MonoBehaviour
     private string enemies_path = "../Json/enemy.json";
     private string skills_path = "../Json/skill.json";
     private string states_path = "../Json/state.json";
+
+    private float timeCount;
+
     void Awake(){
         DataLoader();
         dicConsumable = consumables.ToDictionary();
@@ -64,39 +67,47 @@ public class Base : MonoBehaviour
     {
         DontDestroyOnLoad(this.gameObject);
         playerVec = new Vector3(0,0,0);
-
-       
+        timeCount = Time.time;       
     }
 
     void Update()
     {
-
+        if(Time.time - timeCount > 10){
+            string temp = SceneManager.GetActiveScene().name;
+            if(temp == "GrassLandScene" || temp == "DesertScene" || temp == "DungeonScene"){
+                timeCount = Time.time;    
+                SaveGame(0);
+            }  
+        }
     }
 
     public static void SaveGame(int index)
     {
         SaveData temp = new SaveData();
-        temp.Money = money;
-        temp.BagConsumable = bagConsumable;
-        temp.BagWeapons = bagWeapons;
-
-        DateTime now = DateTime.Now;
-        temp.Day = now.ToString("yyyy/MM/dd HH:mm:ss");
-
-        playerVec = GameObject.Find("PlayerHandle").GetComponent<Transform>().position;
-        temp.PlayerPosX = playerVec.x;
-        temp.PlayerPosY = playerVec.y;
-        temp.PlayerPosZ = playerVec.z;
-
         temp.SceneName = SceneManager.GetActiveScene().name;
-        for(int i=0;i<4;i++){
-            temp.Player[i] = player[i];
-        }
 
-        saveDataDictionary["" + index] = temp;
+        if(temp.SceneName == "GrassLandScene" || temp.SceneName == "DesertScene" || temp.SceneName == "DungeonScene"){
+            temp.Money = money;
+            temp.BagConsumable = bagConsumable;
+            temp.BagWeapons = bagWeapons;
 
-        string jsonOutput = JsonConvert.SerializeObject(saveDataDictionary, Formatting.Indented);
-        File.WriteAllText(Application.dataPath + "/Json/Data.json", jsonOutput);        
+            DateTime now = DateTime.Now;
+            temp.Day = now.ToString("yyyy/MM/dd HH:mm:ss");
+
+            playerVec = GameObject.Find("PlayerHandle").GetComponent<Transform>().position;
+            temp.PlayerPosX = playerVec.x;
+            temp.PlayerPosY = playerVec.y;
+            temp.PlayerPosZ = playerVec.z;
+            
+            for(int i=0;i<4;i++){
+                temp.Player[i] = player[i];
+            }
+
+            saveDataDictionary["" + index] = temp;
+
+            string jsonOutput = JsonConvert.SerializeObject(saveDataDictionary, Formatting.Indented);
+            File.WriteAllText(Application.dataPath + "/Json/Data.json", jsonOutput);        
+        }        
     }
 
     public static void LoadGame(int index)
@@ -123,10 +134,10 @@ public class Base : MonoBehaviour
         LoadGameDic();
 
         money = 10000;
-        player[0].SetAbility("Actor1", 2, 20, 20, 8, 50, 8, 10, 50, 10, 20, 30);
-        player[1].SetAbility("Actor2", 5, 52, 120, 20, 50, 10, 17, 50, 10, 20, 30);
-        player[2].SetAbility("Actor3", 3, 70, 70, 40, 50, 3, 10, 50, 10, 20, 30);
-        player[3].SetAbility("Actor4", 7, 89, 170, 30, 50, 7, 25, 50, 10, 20, 30);
+        player[0].SetAbility("紅緋·影月", 2, 20, 20, 8, 50, 8, 10, 50, 10, 20, 30);
+        player[1].SetAbility("暗影·銀風", 5, 52, 120, 20, 50, 10, 17, 50, 10, 20, 30);
+        player[2].SetAbility("金煌·雷雅", 3, 70, 70, 40, 50, 3, 10, 50, 10, 20, 30);
+        player[3].SetAbility("赤炎·鐵鬚", 7, 89, 170, 30, 50, 7, 25, 50, 10, 20, 30);
 
         bagConsumable["1"] = 3;
         bagConsumable["2"] = 5;

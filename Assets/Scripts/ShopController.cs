@@ -133,7 +133,7 @@ public class ShopController : MonoBehaviour
                         Base.bagWeapons["" + weaponButtonList[state_id]] = int.Parse(selectPageCount.text);
                     }
                 }else if(state == "skill"){
-
+                    
                 }else{
                     if(state_id<Base.bagConsumable.Count){
                         Base.bagConsumable["" + bagButtonList[state_id]] -= int.Parse(selectPageCount.text);
