@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 684351346392520956}
   - component: {fileID: 5819952807564011734}
   - component: {fileID: 5404550568242048319}
+  - component: {fileID: 253176329015466873}
   m_Layer: 0
   m_Name: Enemy03
   m_TagString: Untagged
@@ -120,7 +121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyParent: {fileID: 2700172570290771187}
   enemy: {fileID: 8158026399299559642}
-  enemyAni: {fileID: 4163582959064112363}
+  enemyAni: {fileID: 807244144634280245}
   enemyID: 3
   wander: 1
   battleScene: Battle1
@@ -198,6 +199,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fc6f305d3703e1e4c9c9587313dcb208, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2471672029223166395}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fc6f305d3703e1e4c9c9587313dcb208, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 807244144634280245}
   m_SourcePrefab: {fileID: 100100000, guid: fc6f305d3703e1e4c9c9587313dcb208, type: 3}
 --- !u!1 &8158026399299559642 stripped
 GameObject:
@@ -254,6 +258,27 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!95 &807244144634280245
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8158026399299559642}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 92b36a15e6c488e42ad3a299c3e3539a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!4 &8826194789661817440 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: fc6f305d3703e1e4c9c9587313dcb208, type: 3}

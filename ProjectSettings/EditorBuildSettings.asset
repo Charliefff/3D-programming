@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/GrassLandScene.unity
     guid: 84dc31f28bcbef047a219345498c4c65
   - enabled: 1
-    path: Assets/Scenes/BattleDemo.unity
+    path: Assets/Scenes/Battle1.unity
     guid: 44890247e5055364c9a4e65d03d06785
   - enabled: 1
     path: Assets/Scenes/DesertScene.unity
@@ -26,4 +26,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BaseArea.unity
     guid: 4e785f01032dc3e449528eee842ecdce
+  - enabled: 1
+    path: Assets/Scenes/Battle2.unity
+    guid: 9dc85187402ec0c43b584262fd741361
+  - enabled: 1
+    path: Assets/Scenes/Battle3.unity
+    guid: 8ef2fe4c5ace40c4a9449e23f8950d2a
   m_configObjects: {}
