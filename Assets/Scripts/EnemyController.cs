@@ -10,6 +10,7 @@ public class EnemyController : MonoBehaviour
     public Animator enemyAni;
     public int enemyID;
     public bool wander = true;
+    public string battleScene;
 
 
     private float counter = 0f;
@@ -80,7 +81,7 @@ public class EnemyController : MonoBehaviour
                 Base.enemyID = enemyID;
                 Base.playerVec = GameObject.Find("PlayerHandle").GetComponent<Transform>().position;
                 
-                loadingController.SwitchScene("BattleDemo", false);
+                loadingController.SwitchScene(battleScene, false);
             }            
         }
     }

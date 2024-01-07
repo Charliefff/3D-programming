@@ -46,6 +46,7 @@ public class DashBoardSkillController : MonoBehaviour
             GameObject newButtonObj = Instantiate(skillButton, skillParent);
 
             // newButtonObj.transform.Find("Image").GetComponent<Image>().sprite = Resources.Load<Sprite>(Base.dicConsumable[key].Image);
+            newButtonObj.transform.Find("Image").GetComponent<Image>().sprite = Resources.Load<Sprite>("book");
             newButtonObj.transform.Find("Count").GetComponent<TextMeshProUGUI>().text = "<";
             newButtonObj.transform.Find("Detail").GetComponent<TextMeshProUGUI>().text = Base.dicSkill[skill].SkillName;
 
@@ -61,6 +62,7 @@ public class DashBoardSkillController : MonoBehaviour
             if(i < Base.player[selectActor].SkillList.Count){
                 skillLearnedButton[i].SetActive(true);
                 // skillLearnedButton[i].transform.Find("Image").GetComponent<Image>().sprite = Resources.Load<Sprite>(Base.dicConsumable[key].Image);
+                skillLearnedButton[i].transform.Find("Image").GetComponent<Image>().sprite = Resources.Load<Sprite>("book");
                 skillLearnedButton[i].transform.Find("Count").GetComponent<TextMeshProUGUI>().text = ">";
                 skillLearnedButton[i].transform.Find("Detail").GetComponent<TextMeshProUGUI>().text = Base.dicSkill[Base.player[selectActor].SkillList[i]].SkillName;
             }else{
