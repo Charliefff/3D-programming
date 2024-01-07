@@ -81,10 +81,11 @@ public class BattleObj4 : BattleBase
 
     private void Attack()
     {
-        GameObject TargetChild;
+        GameObject TargetChild = FindFirstActiveChild(Target);
+
         int Def;
         int Att;
-        TargetChild = Target.transform.GetChild(0).gameObject;
+
         Def = TargetChild.GetComponent<CharAbility>().Defense;
         Att = transform.GetComponent<CharAbility>().Attack;
         TargetChild.GetComponent<CharAbility>().HP -= (Att / Def);
@@ -98,7 +99,7 @@ public class BattleObj4 : BattleBase
 
         }
 
-        if (oldHP != transform.GetComponent <CharAbility>().HP && transform.GetComponent<CharAbility>().HP > 0)
+        if (oldHP != transform.GetComponent<CharAbility>().HP && transform.GetComponent<CharAbility>().HP > 0)
         {
             ani.SetBool("Pain", true);
             oldHP = transform.GetComponent<CharAbility>().HP;
@@ -109,5 +110,18 @@ public class BattleObj4 : BattleBase
 
         }
     }
+
+    GameObject FindFirstActiveChild(GameObject parent)
+    {
+        foreach (Transform child in parent.transform)
+        {
+            if (child.gameObject.activeSelf)
+            {
+                return child.gameObject;
+            }
+        }
+        return null; // 如果沒有找到活動的子物件，則返回null
+    }
+
 
 }

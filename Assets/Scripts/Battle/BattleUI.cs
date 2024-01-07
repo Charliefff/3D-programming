@@ -11,9 +11,18 @@ public class BattleUI : BattleBase
     public GameObject Skill;
     public GameObject Bag;
     public GameObject Ability;
-    
+    public GameObject ExBar1;
+    public GameObject ExBar2;
+    public GameObject ExBar3;
+    public GameObject ExBar4;
+
+
     private float _lerpSpeed = 3;
 
+    public void Start()
+    {
+        SetExBar();
+    }
     public void Update()
     {
         UpdateBloodUI();
@@ -68,7 +77,7 @@ public class BattleUI : BattleBase
             if (charAbility != null)
             {
                 int health = charAbility.HP;
-                int maxHealth = charAbility.MaxHP;
+                int maxHealth = charAbility.HPMax;
                 bar.fillAmount = Mathf.Lerp(bar.fillAmount, (float)health / maxHealth, _lerpSpeed * Time.deltaTime);
                 UpdateText(health, maxHealth, hpItem);
 
@@ -107,6 +116,23 @@ public class BattleUI : BattleBase
 
 
     }
+
+    private void SetExBar()
+    {
+        // 獲取 Image 組件
+        var ExBar1_Image = ExBar1.GetComponent<Image>();
+        var ExBar2_Image = ExBar2.GetComponent<Image>();
+        var ExBar3_Image = ExBar3.GetComponent<Image>();
+        var ExBar4_Image = ExBar4.GetComponent<Image>();
+
+        // 設置每個經驗值條的填充量
+        // 假設每個角色的經驗值條對應一個玩家
+        ExBar1_Image.fillAmount = (float)Base.player[0].Exp / Base.player[0].ExpMax;
+        ExBar2_Image.fillAmount = (float)Base.player[1].Exp / Base.player[1].ExpMax;
+        ExBar3_Image.fillAmount = (float)Base.player[2].Exp / Base.player[2].ExpMax;
+        ExBar4_Image.fillAmount = (float)Base.player[3].Exp / Base.player[3].ExpMax;
+    }
+
 
 }
 

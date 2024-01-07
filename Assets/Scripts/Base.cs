@@ -123,10 +123,10 @@ public class Base : MonoBehaviour
         LoadGameDic();
 
         money = 10000;
-        player[0].SetAbility("Actor1", 2, 20, 20, 8, 50, 8, 10, 50, 10, 20, 30);
-        player[1].SetAbility("Actor2", 5, 52, 120, 20, 50, 10, 17, 50, 10, 20, 30);
-        player[2].SetAbility("Actor3", 3, 70, 70, 40, 50, 3, 10, 50, 10, 20, 30);
-        player[3].SetAbility("Actor4", 7, 89, 170, 30, 50, 7, 25, 50, 10, 20, 30);
+        player[0].SetAbility("Actor1", 2, 20, 20, 8, 50, 8, 10, 50, 10, 2, 30);
+        player[1].SetAbility("Actor2", 5, 120, 120, 20, 50, 10, 17, 50, 10, 1, 30);
+        player[2].SetAbility("Actor3", 3, 150, 150, 40, 50, 3, 10, 50, 10, 3, 30);
+        player[3].SetAbility("Actor4", 7, 60, 60, 30, 50, 7, 25, 50, 10, 0, 30);
 
         bagConsumable["1"] = 3;
         bagConsumable["2"] = 5;

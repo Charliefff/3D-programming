@@ -73,7 +73,7 @@ public class BattleObjMonster : BattleBase
                 chosenIndices.Add(i);
             }
         }
-        Debug.Log(chosenIndices.Count);
+
     }
     
     private int GetRandomIndex()
@@ -135,6 +135,7 @@ public class BattleObjMonster : BattleBase
         }
         else
         {
+            
             EndBattle(); // ¤T¬í«á°õ¦æ EndBattle
         }
     }
@@ -145,6 +146,13 @@ public class BattleObjMonster : BattleBase
         Victory.SetActive(true);
         Battle_music.SetActive(false);
         Victory_music.SetActive(true);
+
+        GameObject ExBar1 = Victory.transform.Find("Ability1").gameObject;
+        GameObject ExBar2 = Victory.transform.Find("Ability2").gameObject;
+        GameObject ExBar3 = Victory.transform.Find("Ability3").gameObject;
+        GameObject ExBar4 = Victory.transform.Find("Ability4").gameObject;
+
+
     }
 
     private void GameOver()

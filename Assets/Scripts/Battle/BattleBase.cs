@@ -42,7 +42,9 @@ public class BattleBase : MonoBehaviour
     protected List<GameObject> PlayersList;
     protected List<GameObject> ObjList;
     protected List<GameObject> AbilityUIList;
-    protected List<int> SpeedList = new List<int> { 4, 0, 2, 3, 1 };
+    //protected List<int> SpeedList = new List<int> {100, Base.player[0].Speed, Base.player[1].Speed, Base.player[2].Speed, Base.player[3].Speed};
+    protected List<int> SpeedList = new List<int> { 5, 0, 2, 3, 1 };
+
 
     //抓出四隻角色
     protected GameObject Player1 = null;
@@ -117,6 +119,8 @@ public class BattleBase : MonoBehaviour
         //Base資訊
         Base_seneriao = Base.sceneName;
         //BaseEnemy_ID = Base.enemyID;
+        //SpeedList = new List<int> { 100, Base.player[0].Speed, Base.player[1].Speed, Base.player[2].Speed, Base.player[3].Speed };
+
 
     }
 
@@ -188,6 +192,7 @@ public class BattleBase : MonoBehaviour
     private void playergameObj()
     {
         string BaseEnemy_Name = "Enemy0" + BaseEnemy_ID;
+        //Debug.Log(BaseEnemy_Name);
         for (int i = 0; i < ObjList.Count; i++)
         {
             if (ObjList[i].name == "Player1")

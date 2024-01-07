@@ -11,13 +11,13 @@ using static UnityEngine.GraphicsBuffer;
 
 public class BattleControl : BattleBase
 {
-    public string skill;
     public bool Playerattack;
-
+    public GameObject particle;
     private GameObject moveobj;
     private Animator Ani;
     private bool previousStateIsAttack = false;
     private bool MonsterAttack = true;
+    private string skill;
     private string movable_name;
 
     protected int CurrentIndex = 0;
@@ -42,6 +42,8 @@ public class BattleControl : BattleBase
                 portalGreen.gameObject.SetActive(true);
             }
         }
+
+
     }
 
     private void Update()
@@ -51,10 +53,13 @@ public class BattleControl : BattleBase
             Movable_name();
 
             Ani = moveobj.transform.Find(movable_name).GetComponent<Animator>();
+
             var stateInfo = Ani.GetCurrentAnimatorStateInfo(0);
 
             if (stateInfo.IsName("Idle") && MonsterAttack)
             {
+                //Debug.Log(movable_name);
+
                 Attack();
                 MonsterAttack = false;
             }
@@ -69,6 +74,7 @@ public class BattleControl : BattleBase
         }
 
         Updateportal();
+        checkskill();
 
     }
 
@@ -211,5 +217,27 @@ public class BattleControl : BattleBase
         {
             movable_name = moveobj.transform.GetChild(0).gameObject.name;
         }
+    }
+
+
+    private void checkskill()
+    {
+        if (skill == "¤õ²y³N")
+        {
+            particle.transform.Find("FireBall").gameObject.SetActive(true);
+        }
+        else if (skill == "ªvÀø")
+        {
+
+            particle.transform.Find("Heal").gameObject.SetActive(true);
+        }
+        else
+        {
+            particle.transform.Find("Heal").gameObject.SetActive(false);
+            particle.transform.Find("FireBall").gameObject.SetActive(false);
+        }
+
+        Debug.Log(skill);
+        skill = "";
     }
 }

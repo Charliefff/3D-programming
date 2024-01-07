@@ -55,6 +55,7 @@ public class ButtonControl : BattleUI
         Skill.SetActive(false);
         var textComponent = gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
 
+        Debug.Log(textComponent.text);
         if (battleControl != null)
         {
             battleControl.CanMove();
