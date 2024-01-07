@@ -10,7 +10,7 @@ using UnityEditor.PackageManager;
 public class BattleBase : MonoBehaviour
 {
     //Base 資訊
-    protected int BaseEnemy_ID = 1;
+    protected int BaseEnemy_ID ;
     protected int BaseEnemy_Level;
     protected string Base_seneriao;
     protected int Base_Ability;
@@ -118,7 +118,7 @@ public class BattleBase : MonoBehaviour
     {
         //Base資訊
         Base_seneriao = Base.sceneName;
-        //BaseEnemy_ID = Base.enemyID;
+        BaseEnemy_ID = Base.enemyID;
         //SpeedList = new List<int> { 100, Base.player[0].Speed, Base.player[1].Speed, Base.player[2].Speed, Base.player[3].Speed };
 
 

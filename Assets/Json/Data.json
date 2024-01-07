@@ -1,6 +1,6 @@
 {
   "0": {
-    "day": "2024/01/07 14:33:37",
+    "day": "2024/01/07 15:21:21",
     "money": 10000,
     "bagConsumable": {
       "1": 3,
@@ -25,13 +25,13 @@
       "16": 1,
       "21": 1
     },
-    "playerPosX": 12.826,
-    "playerPosY": 3.749,
-    "playerPosZ": 63.94,
+    "playerPosX": 29.731451,
+    "playerPosY": 2.89257288,
+    "playerPosZ": 14.0316629,
     "sceneName": "GrassLandScene",
     "player": [
       {
-        "name": "紅緋·影月",
+        "name": "Actor1",
         "level": 2,
         "hp": 20,
         "hpmax": 20,
@@ -41,7 +41,7 @@
         "expmax": 10,
         "attack": 50,
         "defense": 10,
-        "magic": 2,
+        "magic": 20,
         "speed": 30,
         "image": "",
         "weapomList": [
@@ -61,9 +61,9 @@
         ]
       },
       {
-        "name": "暗影·銀風",
+        "name": "Actor1",
         "level": 5,
-        "hp": 120,
+        "hp": -48,
         "hpmax": 120,
         "mp": 20,
         "mpmax": 50,
@@ -71,7 +71,7 @@
         "expmax": 17,
         "attack": 50,
         "defense": 10,
-        "magic": 1,
+        "magic": 20,
         "speed": 30,
         "image": "",
         "weapomList": [],
@@ -79,17 +79,17 @@
         "skillHistoryList": []
       },
       {
-        "name": "金煌·雷雅",
+        "name": "Actor1",
         "level": 3,
-        "hp": 150,
-        "hpmax": 150,
+        "hp": 70,
+        "hpmax": 70,
         "mp": 40,
         "mpmax": 50,
         "exp": 3,
         "expmax": 10,
         "attack": 50,
         "defense": 10,
-        "magic": 3,
+        "magic": 20,
         "speed": 30,
         "image": "",
         "weapomList": [],
@@ -97,17 +97,17 @@
         "skillHistoryList": []
       },
       {
-        "name": "赤炎·鐵鬚",
+        "name": "Actor1",
         "level": 7,
-        "hp": 60,
-        "hpmax": 60,
+        "hp": 89,
+        "hpmax": 170,
         "mp": 30,
         "mpmax": 50,
         "exp": 7,
         "expmax": 25,
         "attack": 50,
         "defense": 10,
-        "magic": 0,
+        "magic": 20,
         "speed": 30,
         "image": "",
         "weapomList": [],

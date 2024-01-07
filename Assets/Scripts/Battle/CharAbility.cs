@@ -45,10 +45,10 @@ public class CharAbility : MonoBehaviour
 
     }
 
-    //public void Update()
-    //{
-    //    UpdateAbility();
-    //}
+    public void Update()
+    {
+        UpdateAbility();
+    }
 
     public void check_player()
     {
