@@ -74,7 +74,7 @@ public class BattleControl : BattleBase
         }
 
         Updateportal();
-        checkskill();
+        //checkskill();
 
     }
 
