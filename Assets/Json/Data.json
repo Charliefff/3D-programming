@@ -31,7 +31,7 @@
     "sceneName": "GrassLandScene",
     "player": [
       {
-        "name": "紅緋·影月",
+        "name": "Actor1",
         "level": 2,
         "hp": 20,
         "hpmax": 20,
@@ -61,7 +61,7 @@
         ]
       },
       {
-        "name": "暗影·銀風",
+        "name": "Actor1",
         "level": 5,
         "hp": 52,
         "hpmax": 120,
@@ -79,7 +79,7 @@
         "skillHistoryList": []
       },
       {
-        "name": "金煌·雷雅",
+        "name": "Actor1",
         "level": 3,
         "hp": 70,
         "hpmax": 70,
@@ -97,7 +97,7 @@
         "skillHistoryList": []
       },
       {
-        "name": "赤炎·鐵鬚",
+        "name": "Actor1",
         "level": 7,
         "hp": 89,
         "hpmax": 170,
