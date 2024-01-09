@@ -12,12 +12,12 @@ using static UnityEngine.GraphicsBuffer;
 public class BattleControl : BattleBase
 {
     public bool Playerattack;
-    public GameObject particle;
+    
     private GameObject moveobj;
     private Animator Ani;
     private bool previousStateIsAttack = false;
     private bool MonsterAttack = true;
-    private string skill;
+    protected string skill;
     private string movable_name;
 
     protected int CurrentIndex = 0;
@@ -74,7 +74,7 @@ public class BattleControl : BattleBase
         }
 
         Updateportal();
-        //checkskill();
+        checkskill();
 
     }
 
@@ -144,7 +144,7 @@ public class BattleControl : BattleBase
             previousStateIsAttack = false;
 
         }
-        else if (stateInfo.IsName("Attack"))
+        else if (stateInfo.IsName("Idle") == false )
         {
             previousStateIsAttack = true;
         }
@@ -204,7 +204,8 @@ public class BattleControl : BattleBase
     public void SkillName(string name)
     {
         skill = name;
-        Debug.Log(skill);
+        skillname = name;
+        //Debug.Log(skill);
     }
 
     private void Movable_name()
@@ -225,19 +226,44 @@ public class BattleControl : BattleBase
         if (skill == "火球術")
         {
             particle.transform.Find("FireBall").gameObject.SetActive(true);
+            Invoke("DeactivateParticles", 1f);
         }
         else if (skill == "治療")
         {
-
             particle.transform.Find("Heal").gameObject.SetActive(true);
+            Invoke("DeactivateParticles", 1f); 
         }
-        else
+        else if(skill == "心靈控制")
         {
-            particle.transform.Find("Heal").gameObject.SetActive(false);
-            particle.transform.Find("FireBall").gameObject.SetActive(false);
+            particle.transform.Find("Heat Distortion").gameObject.SetActive(true);
+            Invoke("DeactivateParticles", 1f); 
+        }
+        else if(skill == "平砍")
+        {
+            particle.transform.Find("normal_attack").gameObject.SetActive(true);
+            Invoke("DeactivateParticles", 1f);
+        }
+        else if(skill == "大力重擊")
+        {
+            particle.transform.Find("Explosion").gameObject.SetActive(true);
+            Invoke("DeactivateParticles", 1f);
         }
 
-        Debug.Log(skill);
-        skill = "";
+        skill = null;
+        
     }
+
+    private void DeactivateParticles()
+    {
+        // 關閉所有 particle
+        particle.transform.Find("Heal").gameObject.SetActive(false);
+        particle.transform.Find("FireBall").gameObject.SetActive(false);
+        particle.transform.Find("Heat Distortion").gameObject.SetActive(false);
+        particle.transform.Find("normal_attack").gameObject.SetActive(false);
+        particle.transform.Find("Explosion").gameObject.SetActive(false);
+
+
+
+    }
+
 }

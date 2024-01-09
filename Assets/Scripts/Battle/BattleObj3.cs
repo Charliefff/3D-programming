@@ -11,6 +11,7 @@ public class BattleObj3 : BattleBase
     private GameObject Target;
     private string aniName;
     private int oldHP;
+    //public GameObject particle;
 
     public void Start()
     {
@@ -99,7 +100,7 @@ public class BattleObj3 : BattleBase
 
         }
 
-        if (oldHP != transform.GetComponent<CharAbility>().HP && transform.GetComponent<CharAbility>().HP > 0)
+        if (oldHP > transform.GetComponent<CharAbility>().HP && transform.GetComponent<CharAbility>().HP > 0)
         {
             ani.SetBool("Pain", true);
             oldHP = transform.GetComponent<CharAbility>().HP;

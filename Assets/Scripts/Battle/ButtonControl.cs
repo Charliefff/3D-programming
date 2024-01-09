@@ -4,11 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class ButtonControl : BattleUI
 {
-
+    
     private BattleControl battleControl;
+    public GameObject Player2;
 
     private void Start()
     {
@@ -39,7 +41,7 @@ public class ButtonControl : BattleUI
 
     public void Clickrun()
     {
-        GameObject.Find("Loading").GetComponent<LoadingController>().SwitchScene("GrassLandScene",true,true);
+        GameObject.Find("Loading").GetComponent<LoadingController>().SwitchScene(Base_seneriao, true,true);
 
     }
 
@@ -55,19 +57,18 @@ public class ButtonControl : BattleUI
         Skill.SetActive(false);
         var textComponent = gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
 
-        Debug.Log(textComponent.text);
+        //Debug.Log(textComponent.text);
         if (battleControl != null)
         {
             battleControl.CanMove();
             battleControl.SkillName(textComponent.text);
-        }
-       
+        } 
 
     }
 
     public void BacktoMainScene()
     {
-        GameObject.Find("Loading").GetComponent<LoadingController>().SwitchScene("GrassLandScene",true,true);
+        GameObject.Find("Loading").GetComponent<LoadingController>().SwitchScene(Base_seneriao,true,true);
     }
 
     public void GameOver()
@@ -75,4 +76,20 @@ public class ButtonControl : BattleUI
         GameObject.Find("Loading").GetComponent<LoadingController>().SwitchScene("TitleScene");
 
     }
+
+    public void ClickCumsumable()
+    {
+        Bag.SetActive(false);
+
+        TextMeshProUGUI countText = transform.Find("Count").GetComponent<TextMeshProUGUI>();
+
+        if (int.TryParse(countText.text, out int countNumber))
+        {
+            countNumber -= 1;
+            countText.text = countNumber.ToString();
+        }
+
+        Player2.transform.GetChild(0).GetComponent<CharAbility>().HP += 15;
+    }
+
 }

@@ -9,6 +9,7 @@ TagManager:
   - HP
   - Ability
   - MP
+  - Exp
   layers:
   - Default
   - TransparentFX

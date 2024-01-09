@@ -11,6 +11,7 @@ public class BattleObj4 : BattleBase
     private GameObject Target;
     private string aniName;
     private int oldHP;
+    //public GameObject particle;
 
     public void Start()
     {
@@ -77,6 +78,15 @@ public class BattleObj4 : BattleBase
         Attack();
         canMove = false;
 
+        //GameObject attackParticle = particle.transform.Find("SmokeEffect").gameObject;
+        //attackParticle.SetActive(true);
+        //StartCoroutine(DisableAfterSeconds(attackParticle, 3f));
+    }
+
+    private IEnumerator DisableAfterSeconds(GameObject obj, float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        obj.SetActive(false);
     }
 
     private void Attack()
@@ -87,6 +97,7 @@ public class BattleObj4 : BattleBase
         int Att;
 
         Def = TargetChild.GetComponent<CharAbility>().Defense;
+        transform.GetComponent<CharAbility>().MP -= 7;
         Att = transform.GetComponent<CharAbility>().Attack;
         TargetChild.GetComponent<CharAbility>().HP -= (Att / Def);
     }
@@ -99,7 +110,7 @@ public class BattleObj4 : BattleBase
 
         }
 
-        if (oldHP != transform.GetComponent<CharAbility>().HP && transform.GetComponent<CharAbility>().HP > 0)
+        if (oldHP > transform.GetComponent<CharAbility>().HP && transform.GetComponent<CharAbility>().HP > 0)
         {
             ani.SetBool("Pain", true);
             oldHP = transform.GetComponent<CharAbility>().HP;

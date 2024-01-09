@@ -45,10 +45,12 @@ public class CharAbility : MonoBehaviour
 
     }
 
-    //public void Update()
-    //{
-    //    UpdateAbility();
-    //}
+    public void Update()
+    {
+        UpdateAbility();
+        if(HP > HPMax)
+        { HP = HPMax; }
+    }
 
     public void check_player()
     {
@@ -110,15 +112,8 @@ public class CharAbility : MonoBehaviour
     if (player_Ability != null)
     {
         Base.player[player_ID].SetAbility("Actor1", Level, HP, HPMax, MP, MPMax, Exp, ExpMax, Attack, Defense, Magic, Speed);
-        Debug.Log("player_ID: "+ player_ID + " " + HP);
+        
         }
-        else
-    {
-        Debug.LogError("player_Ability is null. UpdateAbility method failed.");
-    }
 }
-
-
-
 
 }

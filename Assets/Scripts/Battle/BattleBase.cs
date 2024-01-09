@@ -10,7 +10,7 @@ using UnityEditor.PackageManager;
 public class BattleBase : MonoBehaviour
 {
     //Base 資訊
-    protected int BaseEnemy_ID = 1;
+    protected int BaseEnemy_ID;
     protected int BaseEnemy_Level;
     protected string Base_seneriao;
     protected int Base_Ability;
@@ -26,6 +26,7 @@ public class BattleBase : MonoBehaviour
 
     //動畫
     public Animator ani;
+    public GameObject particle;
 
 
 
@@ -34,16 +35,22 @@ public class BattleBase : MonoBehaviour
     private GameObject[] Monsters;
     private GameObject[] Players;
     private GameObject[] HP;
+    private GameObject[] MP;
+    private GameObject[] Exp;
     private GameObject[] AbilityUI;
 
     protected static string StateObj;
     protected List<GameObject> HPList;
+    protected List<GameObject> MPList;
+
+    protected List<GameObject> ExpList;
     protected List<GameObject> MonstersList;
     protected List<GameObject> PlayersList;
     protected List<GameObject> ObjList;
     protected List<GameObject> AbilityUIList;
     //protected List<int> SpeedList = new List<int> {100, Base.player[0].Speed, Base.player[1].Speed, Base.player[2].Speed, Base.player[3].Speed};
-    protected List<int> SpeedList = new List<int> { 5, 0, 2, 3, 1 };
+    protected List<int> SpeedList;
+    protected string skillname;
 
 
     //抓出四隻角色
@@ -118,8 +125,10 @@ public class BattleBase : MonoBehaviour
     {
         //Base資訊
         Base_seneriao = Base.sceneName;
-        //BaseEnemy_ID = Base.enemyID;
-        //SpeedList = new List<int> { 100, Base.player[0].Speed, Base.player[1].Speed, Base.player[2].Speed, Base.player[3].Speed };
+        BaseEnemy_ID = Base.enemyID;
+        Base_seneriao = Base.sceneName;
+        //Debug.Log(Base_seneriao);
+        SpeedList = new List<int> { 100, Base.player[0].Speed, Base.player[1].Speed, Base.player[2].Speed, Base.player[3].Speed };
 
 
     }
@@ -156,11 +165,14 @@ public class BattleBase : MonoBehaviour
     private void SetPlayer()
     {
         HP = GameObject.FindGameObjectsWithTag("HP");
+        MP = GameObject.FindGameObjectsWithTag("MP");
+        Exp = GameObject.FindGameObjectsWithTag("Exp");
         Players = GameObject.FindGameObjectsWithTag("Player");
         AbilityUI = GameObject.FindGameObjectsWithTag("Ability");
 
 
         HPList = new List<GameObject>();
+        MPList = new List<GameObject>();
         ObjList = new List<GameObject>();
         MonstersList = new List<GameObject>();
         PlayersList = new List<GameObject>();
@@ -171,6 +183,14 @@ public class BattleBase : MonoBehaviour
         for (int i = 0; i < HP.Length; i++)
         {
             HPList.Add(HP[i]);
+        }
+        for (int i = 0; i < MP.Length; i++)
+        {
+            MPList.Add(MP[i]);
+        }
+        for (int i = 0; i < Exp.Length; i++)
+        {
+            ExpList.Add(Exp[i]);
         }
 
         for (int i = 0; i < Monsters.Length; i++)
